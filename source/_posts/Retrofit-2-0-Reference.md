@@ -94,10 +94,7 @@ call.enqueue(new Callback<List<Contributor>>() {
 });
 ```
 ### Cancel Transaction
-Use `cancel()`to cancel an ongoing transaction:
-``` java
-call.cancel();
-``` 
+Use `cancel()`to cancel an ongoing transaction.
 
 ## URL Resolving
 Retrofit 2.0 comes with new URL resolving concept. Base URL and @Url have not just simply been combined together but have been resolved the same way as what `<a href="...">` does instead. Please take a look for the examples below for the clarification.
@@ -258,16 +255,6 @@ http://stackoverflow.com/questions/32942661/how-can-retrofit-2-0-parse-nested-js
 - [Tutorial 1](https://realm.io/news/droidcon-jake-wharton-simple-http-retrofit-2/)
 - [Tutorial 2](http://blog.robinchutaux.com/blog/a-smart-way-to-use-retrofit/)
 - [Tutorial 3](http://inthecheesefactory.com/blog/retrofit-2.0/en)
-
-
-
-
-
-
-
-
-
-
 
 @(Learning Cards)[Marxico|Android]
 
