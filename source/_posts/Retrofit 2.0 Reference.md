@@ -12,7 +12,7 @@ tags:
 Here is a quick reference for adopting **Retrofit 2.0** into our Android app. 
 <!-- more -->
 ## A Simple Example
-Here is an example about downloading the name of the contributors and the number of their commits from the [Github Retrofit project](https://github.com/square/retrofit).
+Here is an [example](https://github.com/registercosmo/RetrofitDemo) about downloading the name of the contributors and the number of their commits from the [Github Retrofit project](https://github.com/square/retrofit).
 
 We use the Github public API for retrieving contributors' information. 
 > api.github.com/repos/{owner}/{repo}/contributors
@@ -94,7 +94,7 @@ call.enqueue(new Callback<List<Contributor>>() {
 });
 ```
 ### Cancel Transaction
-Use `cancel()`to cancel an ongoing transaction.
+Use `call.cancel()`to cancel an ongoing transaction.
 
 ## URL Resolving
 Retrofit 2.0 comes with new URL resolving concept. Base URL and @Url have not just simply been combined together but have been resolved the same way as what `<a href="...">` does instead. Please take a look for the examples below for the clarification.
