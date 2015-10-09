@@ -23,7 +23,7 @@ always use the resource via an instance of a RAII-class that either
 - has automatic storage duration
 - is a non-static member of a class whose instance has automatic storage duration
 
-Classes with `open()/close()`, `lock()/unlock()`, or `init()/copyFrom()/destroy()` member functions are typical examples of **non-RAII** classes:
+Classes with `open()`/`close()`, `lock()`/`unlock()`, or `init()`/`copyFrom()`/`destroy()` member functions are typical examples of **non-RAII** classes:
 
 
 ``` C++
