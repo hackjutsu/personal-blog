@@ -132,8 +132,75 @@ private volatile boolean running = true;
 ----------
 
 
-## Threads pools with the Executor Framework
+## Thread pools with the Executor Framework
+### Runnable
+**Executors framework** is used to run the `Runnable` objects without creating new threads every time and mostly re-using the already created threads. There is a **thread pool** managing a pool of worker thread. Each submittd task to the thread pool will enters a queue waiting to be executed. 
 
+> A thread pool can be described as a collection of `Runnable` objects (work queue) and a connections of running threads. These threads are constantly running and are checking the work query for new work. If there is new work to be done they execute this Runnable. The Thread class itself provides a method, e.g. `execute(Runnable r)` to add a new `Runnable` object to the work queue.     [--- vogella Java concurrency Tutorial](http://www.vogella.com/tutorials/JavaConcurrency/article.html#threadpools)
+
+A thread pool is represented by an instance of the class `ExecutorService`. With the `ExecutorService` instance, we can submit tasks to be executed in the future.
+
+`Executors` provide utilities and factory methods for `ExecutorService`, for example `Executors.newFixedThreadPool(int n)` will create n worker threads. 
+``` java
+ExecutorService pool = Executors.newFixedThreadPool(4);
+
+for(int i = 0; i < 10; i++){
+   pool.submit(new MyRunnable());
+}
+```
+In the codes above 10 `Runnable`instances will be submitted to a thread pool with the size 4. We are responsible to shutdown the thread pool in order to terminate all the threads, or the JVM will risk not to shutdown.
+``` java
+// This will make the executor accept no new threads
+// and finish all existing threads in the queue
+pool.shutdown();
+// Wait until all threads are finish
+pool.awaitTermination();
+```
+We can also force the shutdown of the pool using `shutdownNow()`, with that the currently running tasks will be interrupted and the tasks not started will be returned.
+### Futures and Callables
+The Executor framework works with a `Runnable` instance as shown above. However, `Runnable` cannot return a result to the caller. To get the computed result, Java provides the `Callable` interface. 
+
+The `Callable` object uses generics to define the return value. 
+``` java
+public class MyCallable implements Callable<Integer> {
+    
+    @Override
+    public Integer call() throws Exception {
+        int sum = 0;
+        for (long i = 0; i <= 100; i++) {
+            sum += i;
+        }
+        return sum;
+    }
+}
+```
+When we submit a `Callable` instance to the thread pool, we will get a `Future` object,  which exposes methods for us to monitor the progress that the task being executed.
+``` java
+ExecutorService executor = Executors.newFixedThreadPool(5);
+Future<Integer> future = executor.submit(new MyCallable());
+int result = future.get();
+```
+The `Future`'s `get()`will waits if necessary for the computation to complete, and then retrieves the result. Here is a list of methods provided by `Future`:
+- `boolean cancel(boolean mayInterruptIfRunning)`
+	- Attempts to cancel execution of this task.
+- `V get()`
+	- Waits if necessary for the computation to complete, and then retrieves its result.
+- `V get(long timeout, TimeUnit unit)`
+	- Waits if necessary for at most the given time for the computation to complete, and then retrieves its result, if available.
+- `boolean isCancelled()`
+	-  Returns true if this task was cancelled before it completed normally.
+- `boolean isDone()`
+	- Returns true if this task completed.
+
+> **Note:** Check out the Oracle documentations for more about [Callable](http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Callable.html) and [Future](http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Future.html).
+
+### Java 8's CompletableFuture
+`CompletableFuture` extends the functionality of the `Future` interface with the possibility to notify the caller once a task is done by utilizing function-style callbacks. 
+
+> Tutorials about `CompletableFuture` can be found here:
+> https://goo.gl/RNfz61
+> http://goo.gl/Y87j8A
+> http://goo.gl/OoVePS
 
 ----------
 
