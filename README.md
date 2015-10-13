@@ -4,7 +4,7 @@ Hey, feel free to visit my blog:)
 
 "Justu" means "skills" in Japanese, for example "Kenjustu" means "skills of swords". Inspired by that, I make the word "Hackjustu" for "skills of hacking" here. Have fun;)
 
-www.hackjustu.ninja  or  www.hackjustu.xyz  or  hackjustu.herokuapp.com
+www.hackjustu.ninja    or     www.hackjustu.xyz
 
 ![Image of Screen Shot](https://github.com/registercosmo/Hackjustu/blob/master/ScreenShot.png)
 
