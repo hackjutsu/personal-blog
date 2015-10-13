@@ -1,7 +1,7 @@
 # Java Concurrency (In Progress)
 
 title: Java Concurrency (In Progress)
-date: 2015-10-10 18:00:45
+date: 2015-10-11 18:00:45
 tags: 
 - Java
 - Concurrency
@@ -204,26 +204,72 @@ The `Future`'s `get()`will waits if necessary for the computation to complete, a
 
 ----------
 
+## Synchornized Keyword
+The Java `synchronized`keyword marks a Java block or method as synchronized to avoid race conditions. These synchronized blocks or methods only allow one thread executing their codes at one time. As [summarized by Jakob Jenkov](http://tutorials.jenkov.com/java-concurrency/synchronized.html) , the synchronized keyword can be used to mark four different types of blocs:
+- Instance methods
+- Static methods
+- Code blocks inside instance methods
+- Code blocks inside static methods
+
+### Synchronized Instance Methods
+A synchronized instance method in Java is synchronized on the instance (object) owning the method.  Only one thread can execute the synchronized method **on the same instance** at one time.
+``` java
+public synchronized void add(int value){
+    this.count += value;
+}
+```
+### Synchronized Static Methods
+Only one thread can execute inside a static synchronized method **in the same class**.
+``` java
+public static synchronized void add(int value){
+     count += value;
+}
+```
+### Synchronized Blocks in Instance Methods
+Sometimes, we don't need to synchronize the whole method, insteads, we can only synchronize a block of codes. 
+``` java
+public void add(int value){
+    // Some codes before the synchronized block
+    synchronized(this){
+        this.count += value;   
+    }
+    // Some codes after the synchronized block
+}
+```
+The object taken in the parentheses by the synchronized construct is called a monitor object. Only one thread can execute inside a Java code block synchronized on the same monitor object. In the codes below, the synchroinzed codes take `this` as the monitor object.
+### Synchronized Blocks in Static Methods
+Only one thread can execute inside the synchronized block **in the same class** (`MyClass.class`in the codes below).
+``` java
+public class MyClass {
+
+    public static void log(String msg1, String msg2){
+	    // Some codes before the synchronized block
+        synchronized(MyClass.class){
+            System.out.println("Hello World!");
+        }
+        // Some codes after the synchronized block
+    }
+}
+```
+
+
 
 ## Thread Signaling
 
-
-----------
-
-
-## Synchornized Keyword
+Comming soon...
 
 
 ----------
 
 
 ## Re-entrant Locks and Condition Variables
-
+Comming soon...
 
 ----------
 
 
 ## Semaphores
+Comming soon...
 
 
 ----------
@@ -231,7 +277,13 @@ The `Future`'s `get()`will waits if necessary for the computation to complete, a
 
 
 ## Blocking Queue
+Comming soon...
 
+
+----------
+
+## Producer-Consumer Pattern
+Comming soon...
 
 ----------
 

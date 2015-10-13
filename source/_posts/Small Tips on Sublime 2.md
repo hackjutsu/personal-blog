@@ -1,7 +1,7 @@
 # Small Tips on Sublime 2
 
 title: Small Tips on Sublime 2
-date: 2015-10-11 18:00:00
+date: 2015-10-10 18:00:00
 tags: Sublime 2
 
 ---
