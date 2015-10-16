@@ -1,7 +1,7 @@
 # Java Concurrency (In Progress)
 
 title: Java Concurrency (In Progress)
-date: 2015-10-11 18:00:45
+date: 2015-10-15 18:00:45
 tags: 
 - Java
 - Concurrency
@@ -252,12 +252,95 @@ public class MyClass {
 }
 ```
 
-
-
 ## Thread Signaling
+As the name suggested, thread signaling should enable threads to send signals to each other. At the same time, it should also allow threads to wait signals from other threads.
 
-Comming soon...
+### Busy Waiting
+The most intuitive way for thread signaling is let threads send signals to and retrieve signals from a shared object. 
+``` java
+public class SharedSignal{
 
+    protected boolean mShouldContinue = false;
+
+    public synchronized boolean shouldContinue(){
+        return mShouldContinue;
+    }
+
+    public synchronized void setShouldContinue(boolean continue){
+        mShouldContinue = continue;  
+    }
+}
+```
+Thread A could do a busy waiting for Thread B to signal the `SharedSignal` object.
+``` java
+protected SharedSignal signal = new SharedSignal();
+// Some codes here
+
+while(!signal.shouldContinue()) {
+// busy waiting
+}
+```
+### wait(), notify() and notifyAll()
+The busy waiting consumes the CPU while waiting, which is not very efficient. Java `Object` has a built-in mechanism for a more smarter wait. The thread will sleep while waiting until some other thread sends a signal to wait it up.
+
+`Object` defines three methods `wait()`, `notify()` and `notifyAll()` to facilitate this smart wait.
+
+A thread that calls `wait()` on any object becomes inactive until another thread calls `notify()` on that object. In order to call either `wait()` or notify the calling thread must first obtain the lock on that object. In other words, the calling thread must call `wait()` or `notify()` from inside a `synchronized` block. 
+
+Once a thread calls `wait()` it releases the lock it holds on the monitor object. Once a thread is awakened it cannot exit the `wait()` call until the thread calling `notify()` has left its `synchronized` block.  If multiple threads are awakened using `notifyAll()` only one awakened thread at a time can exit the `wait()` method, since each thread must obtain the lock on the monitor object in turn before exiting `wait()`.
+
+[Here](http://stackoverflow.com/a/2536999/3697757) is a good example illustrating this mechanism:
+
+``` java
+class MyHouse {
+    private boolean pizzaArrived = false;
+
+    public void eatPizza() {
+        synchronized(this) {
+            while(!pizzaArrived) { // Never do if(!pizzaArrived)
+                wait();
+            }
+        }
+        System.out.println("yumyum..");
+    }
+
+    public void pizzaGuy() {
+        synchronized(this) {
+             this.pizzaArrived = true;
+             notifyAll(); // Stick with notifyAll() until you know what you are doing
+        }
+    }
+}
+```
+The post lists some important points:
+- Always use `while(!pizzaArrized)` insteads of `if(!pizzaArrived)` to avoid the suspicious wake up.
+- We must hold the lock (synchronized) before invoking wait/nofity. Threads also have to acquire lock before waking.
+- Try to avoid acquiring any lock within your synchronized block and strive to not invoke alien methods (methods you don't know for sure what they are doing). If you have to, make sure to take measures to avoid deadlocks.
+- Be careful with notify(). Stick with `notifyAll()` until you know what you are doing.
+- Last, but not least, read [Java Concurrency in Practice](http://www.amazon.com/gp/product/0321349601?ie=UTF8&tag=none0b69&linkCode=as2&camp=1789&creative=9325&creativeASIN=0321349601)!
+
+>  **Note:**  Don't call `wait()` on constant Strings or global objects!!  The JVM/Compiler internally translates constant strings into the same object. 
+
+----------
+
+## Blocking Queue
+
+[BlockingQueue](http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/BlockingQueue.html) is a queue interface which is thread safe to insert or retrieve elements from it, which is a nice candidate for concurrent development. Here is an [example](http://examples.javacodegeeks.com/core-java/util/concurrent/java-blockingqueue-example/) about utilizing BlockingQueue for a Producer-Consumer pattern.
+
+|   Methods |    Throws Exception | Special Value |Blocks|Times Out|
+|:---------:|:-------------------:|:-------------:|:----:|:-------:|
+| Insert    |add(o)|offer(o)|put(o)|offer(o, timeout, timeunit)|
+| Remove    |remove(o)|poll(o)|take()|poll(timeout, timeunit)|
+| Examine   |element()|peek()| N/A | N/A |
+
+- **Throws Exception** 
+If the attempted operation is not possible immediately, an exception is thrown.
+- **Special Value** 
+If the attempted operation is not possible immediately, a special value is returned (often true / false).
+- **Blocks** 
+If the attempted operation is not possible immedidately, the method call blocks until it is.
+- **Times Out** 
+If the attempted operation is not possible immedidately, the method call blocks until it is, but waits no longer than the given timeout. Returns a special value telling whether the operation succeeded or not (typically true / false).
 
 ----------
 
@@ -270,15 +353,6 @@ Comming soon...
 
 ## Semaphores
 Comming soon...
-
-
-----------
-
-
-
-## Blocking Queue
-Comming soon...
-
 
 ----------
 
