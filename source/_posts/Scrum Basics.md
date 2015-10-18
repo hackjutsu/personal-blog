@@ -16,7 +16,7 @@ tags:
 
 ## Overview
 
-![Image from Udemy course Basics of Scrum, Agile and Project Delivery](http://i.imgur.com/Yx6CC06.png)
+![Image from Udemy course "Basics of Scrum, Agile and Project Delivery"](http://i.imgur.com/Yx6CC06.png)
 
 
 A *Scrum* project involves a collaborative effort to create a new product, service, or other result as defined in the *Project Vision Statement*.
@@ -27,8 +27,12 @@ In the *Sprint Review Meeting*, the product owner and relevant stakeholders are 
 
 Each Sprint ends with a *Retrospect Sprint Meeting* where the team member discuss the ways to improve processes and performance as they move forward to the subsequent *Sprint*.
 
+
+----------
+
+
 ## Story and Defect
-Check out this [post "Should Defects Be Considered User Stories?"](https://www.scrumalliance.org/community/articles/2013/2013-may/should-defects-be-considered-user-stories) for more information.
+Check out the  [post "Should Defects Be Considered User Stories?"](https://www.scrumalliance.org/community/articles/2013/2013-may/should-defects-be-considered-user-stories)  for more information.
 
 ### Story
 A user story is a description of functionality at the lowest level of granularity that can be independently developed and demonstrated to generate feedback.
@@ -51,9 +55,9 @@ You may not consider defects as  "business value work," but you need to size the
 
 Keep in mind that, we should separate "*delivery of business value*" from "*velocity of the team*". While the former is driven by the product owner, the latter is driven by the team.
 
+Find out more information in this [stack**overflow** post](http://stackoverflow.com/questions/33177365/should-defects-have-story-points-in-scrum).
+
 ----------
 
 
 @(Learning Cards)[Marxico|Agile]
-
-
