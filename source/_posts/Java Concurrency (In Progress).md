@@ -287,7 +287,7 @@ The busy waiting consumes the CPU while waiting, which is not very efficient. Ja
 
 A thread that calls `wait()` on any object becomes inactive until another thread calls `notify()` on that object. In order to call either `wait()` or notify the calling thread must first obtain the lock on that object. In other words, the calling thread must call `wait()` or `notify()` from inside a `synchronized` block. 
 
-Once a thread calls `wait()` it releases the lock it holds on the monitor object. Once a thread is awakened it cannot exit the `wait()` call until the thread calling `notify()` has left its `synchronized` block.  If multiple threads are awakened using `notifyAll()` only one awakened thread at a time can exit the `wait()` method, since each thread must obtain the lock on the monitor object in turn before exiting `wait()`.
+Once a thread calls `wait()` it **releases** the lock it holds on the monitor object. Once a thread is awakened it cannot exit the `wait()` call until the thread calling `notify()` has left its `synchronized` block.  If multiple threads are awakened using `notifyAll()` only one awakened thread at a time can exit the `wait()` method, since each thread must obtain the lock on the monitor object in turn before exiting `wait()`.
 
 [Here](http://stackoverflow.com/a/2536999/3697757) is a good example illustrating this mechanism:
 
@@ -346,7 +346,86 @@ If the attempted operation is not possible immedidately, the method call blocks 
 
 
 ## Re-entrant Locks and Condition Variables
-Comming soon...
+In Java 5.0, a new addition called `ReentrantLock` was made to enhance intrinsic locking capabilities. Prior to this,  `synchronized` and `volatile` were the means for achieving concurrency.
+
+### Re-entrant Locks and synchroinzed
+The `synchronized` uses intrinsic locks or monitors, [this article](https://dzone.com/articles/what-are-reentrant-locks) gives insightful comparation between the intrinsic locking mechanism and the Re-eantrant lock mechanism.  In short......
+
+> The main difference between `synchronized` and `ReentrantLock` is ability to trying for lock interruptibly, and with timeout.
+
+`ReentrantLock` is a concrete implementation of `Lock` interface.  It is mutual exclusive lock, similar to implicit locking provided by `synchronized` keyword in Java, with extended feature like **fairness**, which can be used to provide lock to longest waiting thread. Lock is acquired by `lock()` method and held by Thread until a call to `unlock()` method. **Fairness**  parameter is provided while creating instance of `ReentrantLock` in constructor. `ReentrantLock` provides same visibility and ordering guarantee, provided by implicitly locking, which means, `unlock()` happens before another thread get `lock()`.
+
+### Re-entrant Locks Example
+Here is a example using Re-entrant lock to increment the counter.  [Check out the original post here :)](http://javarevisited.blogspot.com/2013/03/reentrantlock-example-in-java-synchronized-difference-vs-lock.html)
+``` java
+public class ReentrantLockTest {
+
+    private final ReentrantLock lock = new ReentrantLock();
+    private int count = 0;
+
+    //Locking using Lock and ReentrantLock
+    public int getCount() {
+        lock.lock();
+        try {
+            System.out.println(Thread.currentThread().getName() + " gets Count: " + count);
+            return count++;
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public static void main(String args[]) {
+        final ReentrantLockTest counter = new ReentrantLockTest();
+        Thread t1 = new Thread() {
+
+            @Override
+            public void run() {
+                while (counter.getCount() <= 6) {
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+        };
+
+        Thread t2 = new Thread() {
+
+            @Override
+            public void run() {
+                while (counter.getCount() <= 6) {
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+        };
+
+        t1.start();
+        t2.start();
+    }
+}
+```
+Note that since the lock is not automatically released when the method exits, you should wrap the `lock()` and the `unlock()` methods in a `try/finally` clause.
+
+### Conditional Variable
+
+The `Condition` interface factors out the `java.lang.Object` monitor methods (`wait()`, `notify()`, and `notifyAll()`) into distinct objects to give the effect of having multiple wait-sets per object, by combining them with the use of arbitrary `Lock` implementations. Where `Lock` replaces `synchronized` methods and statements, `Condition` replaces `Object` monitor methods. [Check out this post for more information :)](http://www.javaworld.com/article/2078848/java-concurrency/java-concurrency-java-101-the-next-generation-java-concurrency-without-the-pain-part-2.html)
+
+`Condition` declares the following methods: 
+
+- `void await()` forces the current thread to wait until it's signalled or interrupted.
+- `boolean await(long time, TimeUnit unit)` forces the current thread to wait until it's signalled or interrupted, or the specified waiting time elapses.
+- `long awaitNanos(long nanosTimeout)` forces the current thread to wait until it's signalled or interrupted, or the specified waiting time elapses.
+- `void awaitUninterruptibly()` forces the current thread to wait until it's signalled.
+boolean awaitUntil(Date deadline) forces the current thread to wait until it's signalled or interrupted, or the specified deadline elapses.
+- `void signal()` wakes up one waiting thread.
+- `void signalAll()` wakes up all waiting threads.
+
+[Examples comming soon...](http://www.javaworld.com/article/2078848/java-concurrency/java-concurrency-java-101-the-next-generation-java-concurrency-without-the-pain-part-2.html)
 
 ----------
 
