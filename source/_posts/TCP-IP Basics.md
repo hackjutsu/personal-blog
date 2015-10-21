@@ -8,7 +8,6 @@ tags:
 
 ---
 
-# What is TCP/IP?
 `TCP/IP` (Transmission Control Protocol/Internet Protocol) is the basic communication language or protocol of the Internet. It can also be used as a communications protocol in a private network (either an intranet or an extranet).
 
 <!--more-->
