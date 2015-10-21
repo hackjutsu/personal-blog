@@ -1,6 +1,6 @@
-# TCP-IP Addressing
+# TCP-IP Basics
 
-title: TCP-IP Addressing
+title: TCP-IP Basics
 date: 2015-10-20 18:00:00
 tags:
 - Network
@@ -32,7 +32,11 @@ Besides IPv6, another solution called [NAT (Network Address Translation)](https:
 
 
 # IPv4 Address Classification
-[Check out this post :)](https://en.wikipedia.org/wiki/Classful_network)
+In the original Internet routing scheme developed in the 1970s, sites were assigned addresses from one of three classes: Class A, Class B and Class C. The address classes differ in size and number. Class A addresses are the largest, but there are few of them. Class Cs are the smallest, but they are numerous. Classes D and E are also defined, but not used in normal operation.
+
+![IPv4 Address Classification](http://i.imgur.com/ChgCNZD.png)
+
+[Check out this Wikipedia post for more details :)](https://en.wikipedia.org/wiki/Classful_network)
 
 
 ----------
@@ -113,7 +117,7 @@ When we connect to the Internet from a host within a LAN, the router will transl
 
 There are certain addresses in each class of IP address are reserved for Private Network. These addresses are called **private address**.
 
-| CLASS    |    BEGIN  | END  |
+| CLASS    |  START IP  | END IP |
 | :------: | :--------:| :--: |
 | Class A  | 10.0.0.0 | 10.255.255.255 |
 | Class B  | 172.16.0.0 | 172.31.255.255  |
