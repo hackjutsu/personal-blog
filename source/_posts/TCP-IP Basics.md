@@ -16,7 +16,7 @@ tags:
 ----------
 
 
-# TCP/IP addressing
+## TCP/IP addressing
 IP Address is Logical Address given to each and every device in the network. It is a Network Layer address (Layer 3). There are two versions of IP: `IPv4` and `IPv6`.
 
 IPv4 was developed in 1980's. It is a 32-bit representation with totally 4.3 billion addresses.
@@ -30,7 +30,7 @@ Besides IPv6, another solution called [NAT (Network Address Translation)](https:
 ----------
 
 
-# IPv4 Address Classification
+## IPv4 Address Classification
 In the original Internet routing scheme developed in the 1970s, sites were assigned addresses from one of three classes: Class A, Class B and Class C. The address classes differ in size and number. Class A addresses are the largest, but there are few of them. Class Cs are the smallest, but they are numerous. Classes D and E are also defined, but not used in normal operation.
 
 ![IPv4 Address Classification](http://i.imgur.com/ChgCNZD.png)
@@ -41,7 +41,7 @@ In the original Internet routing scheme developed in the 1970s, sites were assig
 ----------
 
 
-# Network & Host portions
+## Network & Host portions
 IP address is divided into [Network & Host Portion](https://en.wikipedia.org/wiki/Classful_network).
 - **Host**: a specific device in the network
 - **Network**: set of devices
@@ -66,8 +66,8 @@ If two devices in a LAN want to communicate with each other, they have to be in 
 
 ----------
 
-# Network Address & Broadcast Address & Subnet-mask
-## Network Address & Broadcast Address
+## Network Address & Broadcast Address & Subnet-mask
+### Network Address & Broadcast Address
 For each network, as stated above we cannot use the first IP and neither the last one. The first IP is called **Network Address** and the other one is called **Broadcast Address**. For example, in the network `192.168.1.X`, `192.168.1.0` is the Network Address and `192.168.1.255` is the Broadcast Address.
 
 The Network Address is reserved to identify the network. It is useful during routing.
@@ -75,7 +75,7 @@ The Boradcast Address is reversed for broadcasting within the same network.
 
 The remaining addresses are valid IP addresses. Only valid IP addresses can be assigned to hosts/clients.
 
-## Subnet-mask
+### Subnet-mask
 Subnet Mask differentiates Network portion and Host Portion:
 - `1` represent network
 - `0` represent hosts
@@ -90,8 +90,8 @@ Check out this [post](https://www.iplocation.net/subnet-mask) for more informati
 
 ----------
 
-# Private & Public IP
-## Private Address
+## Private & Public IP
+### Private Address
 If we design a LAN, we can consider the private IP.
 **Private IP**
 - Used within the LAN or within the organization
@@ -101,7 +101,7 @@ If we design a LAN, we can consider the private IP.
 - Free
 - Unregistered IP
 
-## Public Address
+### Public Address
 If we want to go to Internet, we need a public IP.
 **Public IP**
 - Used on public network (Internet)
@@ -111,7 +111,7 @@ If we want to go to Internet, we need a public IP.
 - Pay to service provider (or IANA)
 - Registered
 
-## Network Address Translation
+### Network Address Translation
 When we connect to the Internet from a host within a LAN, the router will translate our private IP into a public IP, which is called `Network address translation` or `NAT`. So how to identify whether an IP address is a private IP address or a public IP address?
 
 There are certain addresses in each class of IP address are reserved for Private Network. These addresses are called **private address**.
@@ -124,5 +124,21 @@ There are certain addresses in each class of IP address are reserved for Private
 
 
 ----------
+
+## Classless Inter-Domain Routing (CIDR)
+According to the [Wikipedia post on ICDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing):
+>During the first decade of the Internet after the invention of the Domain Name System (DNS) it became apparent that the devised system based on the classful network scheme of allocating the IP address space and the routing of IP packets was not scalable.
+
+To overcome this shortcommings, CIDR was introduced in 1993 to replace the previous classful addressing network design. In CIDR, IPs are no longer categorized as A/B/C/D classes. An IP address is described as two group of digits. The most significant bits are the network address, which indicates the whole network or a subnet, while the least significant bits serve as host identifiers.
+
+### CIDR Notation
+CIDR notation is a compact representation of an IP address and its associated routing prefix. The notation is constructed from an IP address, a slash ('/') character, and a decimal number. The number is the count of leading 1 bits in the routing mask, traditionally called the network mask.
+
+For example, in CIDR, `210.210.210.0/26` will have a network address of `210.210.210.0` and broadcast address of `210.210.210.63`. Any devices will need to sit between `210.210.210.1` and `210.210.210.62`. In ICDR, the previous classful network can be simply represented as `XX.XX.XX.XX/8` for A, `XX.XX.XX.XX/16` for B and `XX.XX.XX.XX/24` for C.
+
+The subnets will be their own segment entirely, and will not be able to communicate with eachother without using routes. Devices in a subnet will only be able to "see" other devices on their own localized smaller subnet.
+
+----------
+
 
 @(Learning Cards)[Marxico|Full-Stack]
