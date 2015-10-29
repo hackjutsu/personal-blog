@@ -2,7 +2,7 @@
 
 title: Compiler and Interpreter
 date: 2015-10-27 18:00:00
-tags: 
+tags:
 - Compiler
 - Interpreter
 
@@ -23,7 +23,7 @@ In computer science, an interpreter is a computer program that directly **execut
 
 ## Compiler vs Interpreter
 
-Whether execute the command is the biggest difference between an interpreter and a compiler.
+Whether execute the command is the biggest difference between an interpreter and a compiler. Refer the following chart for more comparisons.
 
 | Field | Compiler  | Interpreter |
 | :--: | :--------: | :--------:|
