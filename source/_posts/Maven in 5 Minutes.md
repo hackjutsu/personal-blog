@@ -8,7 +8,7 @@ tags:
 ---
 
 ## Introduction
-Maven is build automation tool mainly for Java Programmer, by addressing two aspects of building software: 1. how software is built and how dependencies are managed. It provides easy way to build project, a way to share Jars and include project dependency.
+Maven is build automation tool mainly for Java Programmer, by addressing two aspects of building software: 1. how software is built and 2. how dependencies are managed. It provides easy way to build project, a way to share Jars and include project dependency.
 
 Maven's objectives are:
 - Making easy build process - Builds
@@ -93,7 +93,11 @@ To make this as an Eclipse project, in terminal, navigate to `hackjustuDemo` pro
 ``` bash
 mvn eclipse:eclipse
 ```
-Then import the project into the Eclipse IDE: `“File -> Import… -> General->Existing Projects into Workspace”`
+Then import the project into the Eclipse IDE:
+`File -> Import… -> General->Existing Projects into Workspace`
+
+> **Note:** Nowadays, Eclipse is smart enough to handle the Maven project:
+> `File -> Import… -> Maven->Existing Maven Projects`
 
 ### Maven Packaging
 ``` bash

@@ -21,6 +21,10 @@ The Super POM define the default `repositories`, `pluginRepositories`, `build`, 
 
 [Check out this link for more information about super POMs](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html#Super_POM) .
 
+
+----------
+
+
 ## Minimal POM
 The minimum POM contains
 - project root
@@ -91,6 +95,10 @@ This is a listing of the elements directly under the POM's project element.
 </project>l
 ```
 
+
+----------
+
+
 ## The Basics
 
 ### Maven Coordinates
@@ -141,6 +149,10 @@ All properties accessible via `java.lang.System.getProperties()` are available a
 
 - **x**: Set within a `<properties/>` element in the POM. The value of `<properties><someVar>value</someVar></properies>` may be used as `${someVar}`.
 
+
+----------
+
+
 ## Build Settings
 Beyond the basics of the POM given above, there are two more elements that must be understood before claiming basic competency of the POM. They are the `build` element, that handles things like declaring your project's directory structure and managing plugins; and the `reporting` element, that largely mirrors the build element for reporting purposes.
 
@@ -185,8 +197,86 @@ Reporting contains the elements that correspond specifically for the site genera
 
 ----------
 
+## More Project Information
+Although the above information is enough to get a firm grasp on POM authoring, there are far more elements to make developer's live easier. Many of these elements are related to site generation, but like all POM declarations, they may be used for anything, depending upon how certain plugins use it. 
+
+### License
+A project should list only licenses that may apply directly to this project, and not list licenses that apply to this project's dependencies. Maven currently does little with these documents other than displays them on generated sites. 
+``` xml
+<licenses>
+  <license>
+    <name>Apache License, Version 2.0</name>
+    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    <distribution>repo</distribution>
+    <comments>A business-friendly OSS license</comments>
+  </license>
+</licenses>
+```
+
+### Organizations
+Here is the most basic information about an organization.
+``` xml
+<organization>
+  <name>Hackjustu</name>
+  <url>http://hackjustu.ninja</url>
+</organization>
+```
+
+### Developers
+This section is self-explained.
+``` xml
+<developers>
+    <developer>
+      <id>hackjustn</id>
+      <name>Hackjustu Ninja</name>
+      <email>hackjustn@example.com<email>
+      <url>http://hackjustu.ninja/someone</url>
+      <organization>SomeOrganization</organization>
+      <organizationUrl>http://www.example.com</organizationUrl>
+      <roles>
+        <role>architect</role>
+        <role>developer</role>
+      </roles>
+      <timezone>America/New_York</timezone>
+      <properties>
+        <picUrl>http://www.example.com/hackjustu/pic</picUrl>
+      </properties>
+    </developer>
+  </developers>
+
+```
+
+### Contributors
+This section is self-explained.
+``` xml
+  <contributors>
+    <contributor>
+      <name>Noelle</name>
+      <email>some.name@gmail.com</email>
+      <url>http://noellemarie.com</url>
+      <organization>Noelle Marie</organization>
+      <organizationUrl>http://noellemarie.com</organizationUrl>
+      <roles>
+        <role>tester</role>
+      </roles>
+      <timezone>America/Vancouver</timezone>
+      <properties>
+        <gtalk>some.name@gmail.com</gtalk>
+      </properties>
+    </contributor>
+  </contributors>
+```
+
+
+----------
+
+## Environment Settings
+[Check out this post for more information.](https://maven.apache.org/pom.html#Environment_Settings)
+
+----------
+
 
 ## Reference
-This post is adapted from the [Maven official document](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html).
+This post is adapted from the [Maven official document](https://maven.apache.org/pom.html) as reading notes. Please refer to the original document for the most up-to-date information.
 
 @(Learning Cards)[Marxico|Maven]
