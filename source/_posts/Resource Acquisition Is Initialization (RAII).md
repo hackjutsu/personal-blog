@@ -23,7 +23,7 @@ always use the resource via an instance of a RAII-class that either
 - has automatic storage duration
 - is a non-static member of a class whose instance has automatic storage duration
 
-Classes with `open()`/`close()`, `lock()`/`unlock()`, or `init()`/`copyFrom()`/`destroy()` member functions are typical examples of **non-RAII** classes:
+Classes with `open()` / `close()`, `lock()` / `unlock()`, or `init()` / `copyFrom()` / `destroy()` member functions are typical examples of **non-RAII** classes:
 
 
 ``` C++
@@ -43,7 +43,11 @@ void good()
 } // if the function returns normally, the mutex is released
 ```
 
-The C++ library classes or wrappers that manage their own resources follow RAII:
+
+----------
+
+
+The following C++ library classes or wrappers manage their own resources following RAII:
 - `std::string`
 - `std::vector`
 - `std::thread`
@@ -53,8 +57,13 @@ The C++ library classes or wrappers that manage their own resources follow RAII:
 - `std::unique_lock`
 - `std::shared_lock`
 
+These C++ library classes that manage their own resources follow allocate their resources in constructors (which throw exceptions on errors), release them in their destructors (which never throw), and don't require explicit cleanup.
 
 Adapted from [articles on cppreference.com](http://en.cppreference.com/w/cpp/language/raii).
+
+
+----------
+
 
 @(Learning Cards)[Marxico|C++]
 
