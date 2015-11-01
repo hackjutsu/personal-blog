@@ -1,11 +1,10 @@
-# Java Concurrency (In Progress)
+# Java Concurrency
 
-title: Java Concurrency (In Progress)
-date: 2015-10-15 18:00:45
+title: Java Concurrency
+date: 2015-10-31 18:37:45
 tags: 
 - Java
 - Concurrency
-- Android
 
 ---
 
@@ -323,28 +322,6 @@ The post lists some important points:
 
 ----------
 
-## Blocking Queue
-
-[BlockingQueue](http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/BlockingQueue.html) is a queue interface which is thread safe to insert or retrieve elements from it, which is a nice candidate for concurrent development. Here is an [example](http://examples.javacodegeeks.com/core-java/util/concurrent/java-blockingqueue-example/) about utilizing BlockingQueue for a Producer-Consumer pattern.
-
-|   Methods |    Throws Exception | Special Value |Blocks|Times Out|
-|:---------:|:-------------------:|:-------------:|:----:|:-------:|
-| Insert    |add(o)|offer(o)|put(o)|offer(o, timeout, timeunit)|
-| Remove    |remove(o)|poll(o)|take()|poll(timeout, timeunit)|
-| Examine   |element()|peek()| N/A | N/A |
-
-- **Throws Exception** 
-If the attempted operation is not possible immediately, an exception is thrown.
-- **Special Value** 
-If the attempted operation is not possible immediately, a special value is returned (often true / false).
-- **Blocks** 
-If the attempted operation is not possible immedidately, the method call blocks until it is.
-- **Times Out** 
-If the attempted operation is not possible immedidately, the method call blocks until it is, but waits no longer than the given timeout. Returns a special value telling whether the operation succeeded or not (typically true / false).
-
-----------
-
-
 ## Re-entrant Locks and Condition Variables
 In Java 5.0, a new addition called `ReentrantLock` was made to enhance intrinsic locking capabilities. Prior to this,  `synchronized` and `volatile` were the means for achieving concurrency.
 
@@ -413,35 +390,149 @@ Note that since the lock is not automatically released when the method exits, yo
 
 ### Conditional Variable
 
-The `Condition` interface factors out the `java.lang.Object` monitor methods (`wait()`, `notify()`, and `notifyAll()`) into distinct objects to give the effect of having multiple wait-sets per object, by combining them with the use of arbitrary `Lock` implementations. Where `Lock` replaces `synchronized` methods and statements, `Condition` replaces `Object` monitor methods. [Check out this post for more information :)](http://www.javaworld.com/article/2078848/java-concurrency/java-concurrency-java-101-the-next-generation-java-concurrency-without-the-pain-part-2.html)
+The `Condition` interface factors out the `java.lang.Object` monitor methods `wait()/notify()/notifyAll()` into distinct objects to give the effect of having multiple wait-sets per object, by combining them with the use of arbitrary `Lock` implementations. Where `Lock` replaces `synchronized` methods and statements, `Condition` replaces `Object` monitor methods. 
 
-`Condition` declares the following methods: 
+> **Note:** The main differences between `synchroinzed/wait/notify` and `Lock` are `Lock` API isn't block bound and we can have many groups of `wait/notify` by using many `Condition` instances.
 
-- `void await()` forces the current thread to wait until it's signalled or interrupted.
-- `boolean await(long time, TimeUnit unit)` forces the current thread to wait until it's signalled or interrupted, or the specified waiting time elapses.
-- `long awaitNanos(long nanosTimeout)` forces the current thread to wait until it's signalled or interrupted, or the specified waiting time elapses.
-- `void awaitUninterruptibly()` forces the current thread to wait until it's signalled.
-boolean awaitUntil(Date deadline) forces the current thread to wait until it's signalled or interrupted, or the specified deadline elapses.
-- `void signal()` wakes up one waiting thread.
-- `void signalAll()` wakes up all waiting threads.
+Here is a sample given by the Java document:
+``` java
+class BoundedBuffer {
+    final Lock lock = new ReentrantLock();
+    final Condition notFull = lock.newCondition();
+    final Condition notEmpty = lock.newCondition();
 
-[Examples comming soon...](http://www.javaworld.com/article/2078848/java-concurrency/java-concurrency-java-101-the-next-generation-java-concurrency-without-the-pain-part-2.html)
+    final Object[] items = new Object[100];
+    int putptr, takeptr, count;
+
+    public void put(Object x) throws InterruptedException {
+        lock.lock();
+        try {
+            while (count == items.length)
+                notFull.await();
+            items[putptr] = x;
+            if (++putptr == items.length)
+                putptr = 0;
+            ++count;
+            notEmpty.signal();
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public Object take() throws InterruptedException {
+        lock.lock();
+        try {
+            while (count == 0)
+                notEmpty.await();
+            Object x = items[takeptr];
+            if (++takeptr == items.length)
+                takeptr = 0;
+            --count;
+            notFull.signal();
+            return x;
+        } finally {
+            lock.unlock();
+        }
+    }
+}
+```
 
 ----------
 
 
 ## Semaphores
-Comming soon...
+> **Note:** [Jakob Jenkov](http://jakob.jenkov.com/) gives a good [tutorial](http://tutorials.jenkov.com/java-util-concurrent/semaphore.html) on the `Semaphore`.  I would like to adapt his tutorial here. For more information, please refer to [the original post](http://tutorials.jenkov.com/java-util-concurrent/semaphore.html).
+
+The `java.util.concurrent.Semaphore` class is a counting semaphore. That means that it has two main methods:
+
+- acquire()
+- release()
+
+The counting semaphore is initialized with a given number of "permits". For each call to `acquire()` a permit is taken by the calling thread. For each call to `release()` a permit is returned to the semaphore. Thus, at most N threads can pass the `acquire()` method without any `release()` calls, where N is the number of permits the semaphore was initialized with. The permits are just a simple counter. 
+
+### Semaphore Usage
+As semaphore typically has two uses: 
+- To guard a critical section against entry by more than N threads at a time.
+- To send signals between two threads.
+
+#### Guarding Critical Sections
+If we use a semaphore to guard a critical section, the thread trying to enter the critical section will typically first try to acquire a permit, enter the critical section, and then release the permit again after. Like this:
+``` java
+Semaphore semaphore = new Semaphore(1);
+
+//critical section
+semaphore.acquire();
+
+...
+
+semaphore.release();
+```
+#### Sending Signals Between Threads 
+If we use a semaphore to send signals between threads, then we would typically have one thread call the `acquire()` method, and the other thread to call the `release()` method.
+
+If no permits are available, the `acquire()` call will block until a permit is released by another thread. Similarly, a `release()` calls is blocked if no more permits can be released into this semaphore.
+
+### Fairness
+No guarantees are made about fairness of the threads acquiring permits from the Semaphore. That is, there is no guarantee that the first thread to call acquire() is also the first thread to obtain a permit. 
+
+To enforce fairness, the `Semaphore` class has a constructor that takes a boolean telling if the semaphore should enforce fairness.
+
+``` java
+Semaphore semaphore = new Semaphore(1, true);
+```
+
+> **Note:** Enforcing fairness comes at a performance / concurrency penalty, so don't enable it unless you need it.
 
 ----------
 
-## Producer-Consumer Pattern
-Comming soon...
+## Blocking Queue
+
+[BlockingQueue](http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/BlockingQueue.html) is a queue interface which is thread safe to insert or retrieve elements from it, which is a nice candidate for concurrent development. Here is an [example](http://examples.javacodegeeks.com/core-java/util/concurrent/java-blockingqueue-example/) about utilizing BlockingQueue for a Producer-Consumer pattern.
+
+|   Methods |    Throws Exception | Special Value |Blocks|Times Out|
+|:---------:|:-------------------:|:-------------:|:----:|:-------:|
+| Insert    |add(o)|offer(o)|put(o)|offer(o, timeout, timeunit)|
+| Remove    |remove(o)|poll(o)|take()|poll(timeout, timeunit)|
+| Examine   |element()|peek()| N/A | N/A |
+
+- **Throws Exception** 
+If the attempted operation is not possible immediately, an exception is thrown.
+- **Special Value** 
+If the attempted operation is not possible immediately, a special value is returned (often true / false).
+- **Blocks** 
+If the attempted operation is not possible immedidately, the method call blocks until it is.
+- **Times Out** 
+If the attempted operation is not possible immedidately, the method call blocks until it is, but waits no longer than the given timeout. Returns a special value telling whether the operation succeeded or not (typically true / false).
+
+----------
+
+## ConcurrentHashMap
+`ConcurrentHashMap` performs better than  `Hashtable` or `synchronized Map` because it only locks a **portion** of Map.
+
+In the book Clean Code, the author [claims the ConcurrentHashMap performs better than HashMap in nearly all situations.](http://stackoverflow.com/questions/6692008/java-concurrenthashmap-is-better-than-hashmap-performance-wise)
+
+> When Java was young Doug Lea wrote the seminal book *Concurrent Programming in Java*. Along with the book he developed several thread-safe collection, which later became part of the JDK in the  `java.util.concurrent` package. The collections in that package are safe for multithreaded situations and they perform well. **In fact, the  ConcurrentHashMap implementation performs better than HashMap in nearly all situations.** It also allows for simultaneous concurrent reads and writes, and it has methods supporting common composite operations that are otherwise not thread safe. If Java 5 is the deployment environment, start with  `ConcurrentHashMap`.
+
+Check out [link1](http://javarevisited.blogspot.com/2013/02/concurrenthashmap-in-java-example-tutorial-working.html) and [link2](http://javarevisited.blogspot.com/2011/04/difference-between-concurrenthashmap.html) for more information.
+
+----------
+
+## Atomic Class
+Here is a small toolkit of classes that support lock-free thread-safe programming on single variables. Check out this [link](http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/atomic/package-summary.html) for more atomic classes.
+
+| Class      | Description |
+| :--------: | :--------:|
+| [AtomicBoolean](http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/atomic/AtomicBoolean.html)    |   A boolean value that may be updated atomically. |
+| [AtomicInteger](http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/atomic/AtomicInteger.html)    |   A int value that may be updated atomically. |
+| [AtomicIntegerArray](http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/atomic/AtomicIntegerArray.html)    |   An int array in which elements may be updated atomically.|
+| [AtomicLong](http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/atomic/AtomicLong.html)    |   A long value that may be updated atomically.|
+| [AtomicLongArray](http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/atomic/AtomicLongArray.html)    |   A long array in which elements may be updated atomically.|
+
 
 ----------
 
 
-Reference:
+## Reference
 http://tutorials.jenkov.com/java-concurrency/references.html
 https://www.udemy.com/java-multithreading
 

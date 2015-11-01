@@ -105,6 +105,48 @@ mvn package
 ```
 This command compiles, run unit test and package the project into a `jar` file and put it in the `project/target` folder.
 
+Here is the directory structure after the `mvn package` command:
+``` bash
+hackjustuDemo
+├── pom.xml
+├── src
+│   ├── main
+│   │   └── java
+│   │       └── ninja
+│   │           └── hackjustu
+│   │               └── App.java
+│   └── test
+│       └── java
+│           └── ninja
+│               └── hackjustu
+│                   └── AppTest.java
+└── target
+    ├── classes
+    │   └── ninja
+    │       └── hackjustu
+    │           └── App.class
+    ├── hackjustuDemo-1.0-SNAPSHOT.jar
+    ├── maven-archiver
+    │   └── pom.properties
+    ├── maven-status
+    │   └── maven-compiler-plugin
+    │       ├── compile
+    │       │   └── default-compile
+    │       │       ├── createdFiles.lst
+    │       │       └── inputFiles.lst
+    │       └── testCompile
+    │           └── default-testCompile
+    │               ├── createdFiles.lst
+    │               └── inputFiles.lst
+    ├── surefire-reports
+    │   ├── TEST-ninja.hackjustu.AppTest.xml
+    │   └── ninja.hackjustu.AppTest.txt
+    └── test-classes
+        └── ninja
+            └── hackjustu
+                └── AppTest.class
+```
+
 ### Run the Application
 ``` bash
 java -cp target/hackjustuDemo-1.0-SNAPSHOT.jar ninja.hackjustu.App

@@ -19,7 +19,7 @@ POM also contains the goals and plugins. While executing a task or goal, Maven l
 
 
 ## Super POM
-The Super POM is Maven's default POM. All POMs extend the Super POM unless explicitly set, meaning the configuration specified in the Super POM is inherited by the POMs you created for your projects.
+The Super POM is Maven's default POM. All POMs extend the Super POM unless explicitly set, meaning the configuration specified in the Super POM is inherited by the POMs we created for our projects.
 
 The Super POM define the default `repositories`, `pluginRepositories`, `build`, `reporting` and `profiles` settings.
 
@@ -49,7 +49,7 @@ A POM requires that its groupId, artifactId, and version be configured. These th
 
 Every Maven project has a packaging type. If it is not specified in the POM, then the default value `jar` would be used.
 
-Furthermore, as you can see that in the minimal POM, the repositories were not specified. If you build your project using the minimal POM, it would **inherit the repositories configuration in the Super POM**. Therefore when Maven sees the dependencies in the minimal POM, it would know that these dependencies will be downloaded from http://repo.maven.apache.org/maven2 which was specified in the Super POM.
+Furthermore, as we can see that in the minimal POM, the repositories were not specified. If we build our project using the minimal POM, it would **inherit the repositories configuration in the Super POM**. Therefore when Maven sees the dependencies in the minimal POM, it would know that these dependencies will be downloaded from http://repo.maven.apache.org/maven2 which was specified in the Super POM.
 
 ----------
 
@@ -112,7 +112,7 @@ This is a listing of the elements directly under the POM's project element.
 ### POM Relationships
 
 #### Dependencies
-The cornerstone of the POM is its dependency list. Maven brings in the dependencies of those dependencies (transitive dependencies), allowing your list to focus solely on the dependencies your project requires.
+The cornerstone of the POM is its dependency list. Maven brings in the dependencies of those dependencies (transitive dependencies), allowing our list to focus solely on the dependencies our project requires.
 
 ##### Dependency Version Requirement Specificatioin
 Dependencies' version element define version requirements, used to compute effective dependency version. Version requirements have the following syntax:
@@ -159,7 +159,7 @@ All properties accessible via `java.lang.System.getProperties()` are available a
 
 
 ## Build Settings
-Beyond the basics of the POM given above, there are two more elements that must be understood before claiming basic competency of the POM. They are the `build` element, that handles things like declaring your project's directory structure and managing plugins; and the `reporting` element, that largely mirrors the build element for reporting purposes.
+Beyond the basics of the POM given above, there are two more elements that must be understood before claiming basic competency of the POM. They are the `build` element, that handles things like declaring our project's directory structure and managing plugins; and the `reporting` element, that largely mirrors the build element for reporting purposes.
 
 ### Build
 The build element is conceptually divided into two parts: 
@@ -201,7 +201,7 @@ The build element is conceptually divided into two parts:
 [Check out this post for more details about the BaseBuild element](https://maven.apache.org/pom.html#The_Basics).
 
 ##### Resources
-Resources are not (usually) code. They are not compiled, but are items meant to be bundled within your project or used for various other reasons.
+Resources are not (usually) code. They are not compiled, but are items meant to be bundled within our project or used for various other reasons.
 ``` xml
   <build>
     ...
@@ -332,6 +332,42 @@ Whenever a project has a dependency upon an artifact, Maven will **first attempt
 The default central Maven repository lives on http://repo.maven.apache.org/maven2/.
 
 [Check out this post for more information.](https://maven.apache.org/pom.html#Repositories)
+
+### Profiles
+A Build profile is a set of configuration values which can be used to set or override default values of Maven build. Using a build profile, we can customize build for different environments such as *Production* vs *Development* environments.
+
+``` xml
+<profiles>
+  <profile>
+    <id>production</id>
+    <activation>
+      <property>
+        <name>build</name>
+        <value>release</value>
+      </property>
+    </activation>
+    [...]
+  </profile>
+  <profile>
+    <id>development</id>
+    <activation>
+      <property>
+        <name>build</name>
+        <value>develop</value>
+      </property>
+    </activation>
+    [...]
+  </profile>
+<profiles>
+```
+For example, we can use a property value to activate a specific build profile.
+``` bash
+mvn -Dbuild=develop package
+mvn -Dbuild=develop test
+
+mvn -Dbuild=release release:prepare
+mvn -Dbuild=release release:perform
+```
 
 ### More about Environment Settings
 [Check out this post for more information.](https://maven.apache.org/pom.html#Environment_Settings)
