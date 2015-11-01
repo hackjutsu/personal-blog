@@ -13,6 +13,11 @@ A `Project Object Model` or `POM` is the fundamental unit of work in Maven. It i
 
 POM also contains the goals and plugins. While executing a task or goal, Maven looks for the POM in the current directory. It reads the POM, gets the needed configuration information, then executes the goal. 
 <!--more-->
+
+
+----------
+
+
 ## Super POM
 The Super POM is Maven's default POM. All POMs extend the Super POM unless explicitly set, meaning the configuration specified in the Super POM is inherited by the POMs you created for your projects.
 
@@ -157,7 +162,28 @@ All properties accessible via `java.lang.System.getProperties()` are available a
 Beyond the basics of the POM given above, there are two more elements that must be understood before claiming basic competency of the POM. They are the `build` element, that handles things like declaring your project's directory structure and managing plugins; and the `reporting` element, that largely mirrors the build element for reporting purposes.
 
 ### Build
-The build element is conceptually divided into two parts: there is a `BaseBuild` type which contains the set of elements common to both build elements; and there is the `Build` type, which contains the `BaseBuild` set as well as more elements for the top level definition. 
+The build element is conceptually divided into two parts: 
+- `BaseBuild` type which contains the set of elements common to both build elements. 
+- `Build` type, which contains the `BaseBuild` set as well as more elements for the top level definition. 
+>**Note:** These different build elements may be denoted **project build** and **profile build**.
+``` xml
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  ...
+  <!-- "Project Build" contains more elements than just the BaseBuild set -->
+  <build>...</build>
+ 
+  <profiles>
+    <profile>
+      <!-- "Profile Build" contains a subset of "Project Build"s elements -->
+      <build>...</build>
+    </profile>
+  </profiles>
+</project>
+```
+
 
 #### The BaseBuild Element Set
 `BaseBuild` is exactly as it sounds: the base set of elements between the two build elements in the POM.
@@ -174,8 +200,36 @@ The build element is conceptually divided into two parts: there is a `BaseBuild`
 ```
 [Check out this post for more details about the BaseBuild element](https://maven.apache.org/pom.html#The_Basics).
 
+##### Resources
+Resources are not (usually) code. They are not compiled, but are items meant to be bundled within your project or used for various other reasons.
+``` xml
+  <build>
+    ...
+    <resources>
+      <resource>
+        <targetPath>META-INF/plexus</targetPath>
+        <filtering>false</filtering>
+        <directory>${basedir}/src/main/plexus</directory>
+        <includes>
+          <include>configuration.xml</include>
+        </includes>
+        <excludes>
+          <exclude>**/*.properties</exclude>
+        </excludes>
+      </resource>
+    </resources>
+    <testResources>
+      ...
+    </testResources>
+    ...
+  </build>
+```
+`testResources` are similar to resource elements, but are naturally used during test phases. 
+##### Plugins & Plugin Management
+[Check out this post for more information.](https://maven.apache.org/pom.html#Plugins)
+
 #### The Build Element Set
-The `Build` type in the XSD denotes those elements that are available only for the "project build". Despite the number of extra elements (six), there are really only two groups of elements that project build contains that are missing from the profile build: directories and extensions.
+The `Build` type in the [XSD](http://searchsoa.techtarget.com/definition/XSD) denotes those elements that are available only for the "project build". Despite the number of extra elements (six), there are really only two groups of elements that project build contains that are missing from the profile build: directories and extensions.
 ##### Directories
 The set of directory elements live in the parent build element, which set various directory structures for the POM as a whole. Since they do not exist in profile builds, these cannot be altered by profiles.
 ``` xml
@@ -271,6 +325,15 @@ This section is self-explained.
 ----------
 
 ## Environment Settings
+
+### Repositories
+Whenever a project has a dependency upon an artifact, Maven will **first attempt to use a local copy of the specified artifact**. If that artifact does not exist in the local repository, it will then attempt to download from a remote repository. The repository elements within a POM specify those alternate repositories to search.
+
+The default central Maven repository lives on http://repo.maven.apache.org/maven2/.
+
+[Check out this post for more information.](https://maven.apache.org/pom.html#Repositories)
+
+### More about Environment Settings
 [Check out this post for more information.](https://maven.apache.org/pom.html#Environment_Settings)
 
 ----------
