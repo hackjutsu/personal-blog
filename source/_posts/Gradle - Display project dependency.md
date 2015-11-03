@@ -1,7 +1,7 @@
 # Gradle - Display project dependency
 title: Gradle - Display project dependency
 date: 2015-10-27 15:00:00
-tags: 
+tags:
 - Gradle
 - Java
 - Android
@@ -54,8 +54,3 @@ BUILD SUCCESSFUL
 
 Total time: 10.579 secs
 ```
-
-
-----------
-
-@(Learning Cards)[Marxico|Gradle]

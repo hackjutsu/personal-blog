@@ -2,13 +2,13 @@
 
 title: Maven Build Lifecycle
 date: 2015-10-31 18:00:00
-tags: 
+tags:
 - Maven
 - Java
 
 ---
 
-Maven is based around the central concept of a build lifecycle. There are three built-in build lifecycles: `default`, `clean` and `site`. 
+Maven is based around the central concept of a build lifecycle. There are three built-in build lifecycles: `default`, `clean` and `site`.
 
 - The `default` lifecycle handles your project deployment
 - The `clean` lifecycle handles project cleaning
@@ -36,15 +36,10 @@ To do all those, you only need to call the last `build` phase to be executed, in
 ``` bash
 mvn deploy
 ```
-That is because if you call a build phase, it will execute not only that build phase, but also every build phase prior to the called build phase. 
+That is because if you call a build phase, it will execute not only that build phase, but also every build phase prior to the called build phase.
 
 ## Lifecycle Reference
 Check out this post for the complete reference of the [Maven build lifecycle](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference).
 
 ## Reference
 This post is a reading note of [the Maven build lifecycle document](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference). Refer to the original post for the most up-to-date information.
-
-
-----------
-
-@(Learning Cards)[Marxico|Maven]

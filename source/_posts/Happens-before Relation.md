@@ -1,7 +1,7 @@
 # Happens-before Relation
 title: Happens-before Relation
 date: 2015-10-24 18:00:00
-tags: 
+tags:
 - Java
 
 ---
@@ -14,7 +14,7 @@ The name of "Happens-before" could be confusing.  In particular:
 - A happening before B does not imply A happens-before B.
 
 
-The Happens-before relation is **all about the codes visibility**, roughly speaking: 
+The Happens-before relation is **all about the codes visibility**, roughly speaking:
 > Let A and B represent operations performed by a multithreaded process. If A happens-before B, then the memory effects of A effectively become visible to the thread performing B before B is performed.
 
 ## Happens-before Order in Java
@@ -35,7 +35,7 @@ When a program contains two conflicting accesses that are not ordered by a happe
 
 Since Java 5 the `volatile` keyword guarantees more than just the reading from and writing to main memory of variables. Actually, the `volatile` keyword guarantees this:
 
-- If Thread A writes to a `volatile` variable and Thread B subsequently reads the same `volatile` variable, then all variables visible to Thread A **before** writing the `volatile` variable, will also be visible to Thread B after it has read the `volatile` variable. 
+- If Thread A writes to a `volatile` variable and Thread B subsequently reads the same `volatile` variable, then all variables visible to Thread A **before** writing the `volatile` variable, will also be visible to Thread B after it has read the `volatile` variable.
 - The reading and writing instructions of `volatile` variables cannot be reordered by the JVM (the JVM may reorder instructions for performance reasons as long as the JVM detects no change in program behaviour from the reordering). Instructions before and after can be reordered, but the `volatile` read or write cannot be mixed with these instructions. **Whatever instructions follow a read or write of a volatile variable are guaranteed to happen after the read or write.**
 
 When a thread writes to a volatile `variable`, then not just the `volatile` variable itself is written to main memory. Also all other variables changed by the thread before writing to the volatile variable are also flushed to main memory. When a thread reads a `volatile` variable it will also read all other variables from main memory which were flushed to main memory together with the volatile variable.
@@ -43,7 +43,7 @@ When a thread writes to a volatile `variable`, then not just the `volatile` vari
 The volatile keyword guarantees that all reads of a `volatile` variable are read directly from main memory, and all writes to a `volatile` variable are written directly to main memory.
 
 #### When to use volatile?
-Multiple threads could be writing to a shared `volatile` variable, and still have the correct value stored in main memory, if the new value written to the variable does not depend on its previous value. 
+Multiple threads could be writing to a shared `volatile` variable, and still have the correct value stored in main memory, if the new value written to the variable does not depend on its previous value.
 
 If a thread needs to first read the value of a `volatile` variable, and based on that value generate a new value for the shared `volatile` variable, a `volatile` variable is no longer enough to guarantee correct visibility. The short time gap in between the reading of the `volatile` variable and the writing of its new value, creates an race condition where multiple threads might read the same value of the `volatile` variable, generate a new value for the variable, and when writing the value back to main memory - overwrite each other's values. In this case, we need to use the `synchronized` keyword to guarantee the reading and writing processes atomic.
 
@@ -60,10 +60,3 @@ https://goo.gl/prDzf4
 http://goo.gl/xr8FDZ
 http://goo.gl/gMg6qW
 http://goo.gl/FqFW1P
-
-----------
-
-@(Learning Cards)[Marxico|Java]
- 
-
-

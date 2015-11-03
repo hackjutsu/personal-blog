@@ -8,7 +8,7 @@ tags: Sublime 2
 
 Just come across some interesting tips to make my life easier on [Sublime 2](http://www.sublimetext.com/2).
 
-Go to **SublimeText 2** > **Preferences** > **User Settings** (or just hit the Mac Standard `cmd + ,`). This should open your User Settings as a JSON file. 
+Go to **SublimeText 2** > **Preferences** > **User Settings** (or just hit the Mac Standard `cmd + ,`). This should open your User Settings as a JSON file.
 
 <!--more-->
 
@@ -31,9 +31,3 @@ Add the following configurations to your Sublime 2 and enjoy hacking:)
 For more about Sublime 2 configurations, please visit the following tutorials:
 - [Configuring Sublime Text](http://www.granneman.com/webdev/editors/sublime-text/configuring-sublime-text/)
 - [Setting up Sublime Text 2](http://blog.alexmaccaw.com/sublime-text)
-
-
-@(Learning Cards)[Marxico|Legacy Tools]
-
-
-

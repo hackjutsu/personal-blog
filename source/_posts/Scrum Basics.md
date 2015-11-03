@@ -56,8 +56,3 @@ You may not consider defects as  "business value work," but you need to size the
 Keep in mind that, we should separate "*delivery of business value*" from "*velocity of the team*". While the former is driven by the product owner, the latter is driven by the team.
 
 Find out more information in this [stack**overflow** post](http://stackoverflow.com/questions/33177365/should-defects-have-story-points-in-scrum).
-
-----------
-
-
-@(Learning Cards)[Marxico|Agile]

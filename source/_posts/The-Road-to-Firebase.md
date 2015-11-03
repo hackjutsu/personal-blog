@@ -1,6 +1,6 @@
 title: The Road to Firebase
 date: 2015-09-24 22:33:13
-tags: 
+tags:
 - Firebase
 - Javascript
 ---
@@ -68,7 +68,7 @@ In this section, we will cover [four methods](https://www.firebase.com/docs/web/
 | **transaction()**    |   Use our transactions feature when working with complex data that could be corrupted by concurrent updates  |
 
 ### set( )
-The basic database operation is `set()`,  which saves new data to the specified database reference, **replacing** any data at that path. 
+The basic database operation is `set()`,  which saves new data to the specified database reference, **replacing** any data at that path.
 
 ``` javascript
 usersRef.child("alanisawesome").set({
@@ -151,7 +151,7 @@ In JavaScript, the pattern of calling `push()` and then immediately calling `set
 
 > **Note:** A push ID can be generated on the client will work while offline and is optimized for performance.
 
-### transaction( ) 
+### transaction( )
 When working with complex data that could be corrupted by concurrent modifications, such as incremental counters, we can use a [transaction](https://www.firebase.com/docs/web/api/firebase/transaction.html) operation. You give this operation two arguments: an update function and an optional completion callback. The update function takes **the current state** of the data as an argument and will return the new desired state you would like to write. For example, if we wanted to increment the number of upvotes on a specific blog post, we would write a transaction like the following:
 ``` javascript
 var upvotesRef = new Firebase('https://docs-examples.firebaseio.com/android/saving-data/fireblog/posts/-JRHTHaIs-jNPLXOQivY/upvotes');
@@ -170,7 +170,7 @@ If the above code had been run without a transaction function and two clients at
 
 
 ## Retrieving Data
-Data stored in a Firebase database is retrieved by attaching **an asynchronous listener** to a database reference. The listener will be triggered once for the initial state of the data and again anytime the data changes. 
+Data stored in a Firebase database is retrieved by attaching **an asynchronous listener** to a database reference. The listener will be triggered once for the initial state of the data and again anytime the data changes.
 
 ### Read Event Types
 >**Value**
@@ -343,7 +343,7 @@ ref.orderByChild("height").limitToFirst(2).on("child_added", function(snapshot) 
 });
 ```
 #### Range Queries
-Using `startAt()`, `endAt()`, and `equalTo()` allows us to choose arbitrary starting and ending points for our queries. 
+Using `startAt()`, `endAt()`, and `equalTo()` allows us to choose arbitrary starting and ending points for our queries.
 Find all dinosaurs that are at least three meters tall, we can combine `orderByChild()` and `startAt()`:
 ``` javascript
 var ref = new Firebase("https://dinosaur-facts.firebaseio.com/dinosaurs");
@@ -390,4 +390,3 @@ ref.child("stegosaurus").child("height").on("value", function(stegosaurusHeightS
 ```
 ### How Data is ordered
 [Reference link.](https://www.firebase.com/docs/web/guide/retrieving-data.html#section-ordered-data)
-

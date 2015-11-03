@@ -2,7 +2,7 @@
 
 title: Java Concurrency
 date: 2015-10-31 18:37:45
-tags: 
+tags:
 - Java
 - Concurrency
 
@@ -88,7 +88,7 @@ class Processor extends Thread {
 
         while(running) {
             System.out.println("Hello");
-        
+
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
@@ -96,9 +96,9 @@ class Processor extends Thread {
             }
         }
     }
-    
-    public void shutdown() {    
-        
+
+    public void shutdown() {
+
         running = false;
     }
 }
@@ -106,18 +106,18 @@ class Processor extends Thread {
 public class BasicSync {
 
     public static void main(String[] args) {
-        
+
         // Start thread_B
         Processor proc = new Processor();
         proc.start();
-        
+
         System.out.println("Please enter return key to stop...");
         Scanner scanner = new Scanner(System.in);
         scanner.nextLine();
-        
+
         // Send shutdown signal from thread_A to thread_B
         proc.shutdown();
-    }   
+    }
 }
 ```
 The program looks fine at the first glance, but actually it could fail to stop the *thread_B* depending on how the compiler optimizes the program. In some compiler, `while(running){...}` in `Processor` could be optimized as `while(true){...}`. The compiler has no idea `running` would be changed by other thread, and it optimizes `running` to `true` according to its knowledge.
@@ -133,13 +133,13 @@ private volatile boolean running = true;
 
 ## Thread pools with the Executor Framework
 ### Runnable
-**Executors framework** is used to run the `Runnable` objects without creating new threads every time and mostly re-using the already created threads. There is a **thread pool** managing a pool of worker thread. Each submittd task to the thread pool will enters a queue waiting to be executed. 
+**Executors framework** is used to run the `Runnable` objects without creating new threads every time and mostly re-using the already created threads. There is a **thread pool** managing a pool of worker thread. Each submittd task to the thread pool will enters a queue waiting to be executed.
 
 > A thread pool can be described as a collection of `Runnable` objects (work queue) and a connections of running threads. These threads are constantly running and are checking the work query for new work. If there is new work to be done they execute this Runnable. The Thread class itself provides a method, e.g. `execute(Runnable r)` to add a new `Runnable` object to the work queue.     [--- vogella Java concurrency Tutorial](http://www.vogella.com/tutorials/JavaConcurrency/article.html#threadpools)
 
 A thread pool is represented by an instance of the class `ExecutorService`. With the `ExecutorService` instance, we can submit tasks to be executed in the future.
 
-`Executors` provide utilities and factory methods for `ExecutorService`, for example `Executors.newFixedThreadPool(int n)` will create n worker threads. 
+`Executors` provide utilities and factory methods for `ExecutorService`, for example `Executors.newFixedThreadPool(int n)` will create n worker threads.
 ``` java
 ExecutorService pool = Executors.newFixedThreadPool(4);
 
@@ -157,12 +157,12 @@ pool.awaitTermination();
 ```
 We can also force the shutdown of the pool using `shutdownNow()`, with that the currently running tasks will be interrupted and the tasks not started will be returned.
 ### Futures and Callables
-The Executor framework works with a `Runnable` instance as shown above. However, `Runnable` cannot return a result to the caller. To get the computed result, Java provides the `Callable` interface. 
+The Executor framework works with a `Runnable` instance as shown above. However, `Runnable` cannot return a result to the caller. To get the computed result, Java provides the `Callable` interface.
 
-The `Callable` object uses generics to define the return value. 
+The `Callable` object uses generics to define the return value.
 ``` java
 public class MyCallable implements Callable<Integer> {
-    
+
     @Override
     public Integer call() throws Exception {
         int sum = 0;
@@ -194,7 +194,7 @@ The `Future`'s `get()`will waits if necessary for the computation to complete, a
 > **Note:** Check out the Oracle documentations for more about [Callable](http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Callable.html) and [Future](http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Future.html).
 
 ### Java 8's CompletableFuture
-`CompletableFuture` extends the functionality of the `Future` interface with the possibility to notify the caller once a task is done by utilizing function-style callbacks. 
+`CompletableFuture` extends the functionality of the `Future` interface with the possibility to notify the caller once a task is done by utilizing function-style callbacks.
 
 > Tutorials about `CompletableFuture` can be found here:
 > https://goo.gl/RNfz61
@@ -225,12 +225,12 @@ public static synchronized void add(int value){
 }
 ```
 ### Synchronized Blocks in Instance Methods
-Sometimes, we don't need to synchronize the whole method, insteads, we can only synchronize a block of codes. 
+Sometimes, we don't need to synchronize the whole method, insteads, we can only synchronize a block of codes.
 ``` java
 public void add(int value){
     // Some codes before the synchronized block
     synchronized(this){
-        this.count += value;   
+        this.count += value;
     }
     // Some codes after the synchronized block
 }
@@ -255,7 +255,7 @@ public class MyClass {
 As the name suggested, thread signaling should enable threads to send signals to each other. At the same time, it should also allow threads to wait signals from other threads.
 
 ### Busy Waiting
-The most intuitive way for thread signaling is let threads send signals to and retrieve signals from a shared object. 
+The most intuitive way for thread signaling is let threads send signals to and retrieve signals from a shared object.
 ``` java
 public class SharedSignal{
 
@@ -266,7 +266,7 @@ public class SharedSignal{
     }
 
     public synchronized void setShouldContinue(boolean continue){
-        mShouldContinue = continue;  
+        mShouldContinue = continue;
     }
 }
 ```
@@ -284,7 +284,7 @@ The busy waiting consumes the CPU while waiting, which is not very efficient. Ja
 
 `Object` defines three methods `wait()`, `notify()` and `notifyAll()` to facilitate this smart wait.
 
-A thread that calls `wait()` on any object becomes inactive until another thread calls `notify()` on that object. In order to call either `wait()` or notify the calling thread must first obtain the lock on that object. In other words, the calling thread must call `wait()` or `notify()` from inside a `synchronized` block. 
+A thread that calls `wait()` on any object becomes inactive until another thread calls `notify()` on that object. In order to call either `wait()` or notify the calling thread must first obtain the lock on that object. In other words, the calling thread must call `wait()` or `notify()` from inside a `synchronized` block.
 
 Once a thread calls `wait()` it **releases** the lock it holds on the monitor object. Once a thread is awakened it cannot exit the `wait()` call until the thread calling `notify()` has left its `synchronized` block.  If multiple threads are awakened using `notifyAll()` only one awakened thread at a time can exit the `wait()` method, since each thread must obtain the lock on the monitor object in turn before exiting `wait()`.
 
@@ -318,7 +318,7 @@ The post lists some important points:
 - Be careful with notify(). Stick with `notifyAll()` until you know what you are doing.
 - Last, but not least, read [Java Concurrency in Practice](http://www.amazon.com/gp/product/0321349601?ie=UTF8&tag=none0b69&linkCode=as2&camp=1789&creative=9325&creativeASIN=0321349601)!
 
->  **Note:**  Don't call `wait()` on constant Strings or global objects!!  The JVM/Compiler internally translates constant strings into the same object. 
+>  **Note:**  Don't call `wait()` on constant Strings or global objects!!  The JVM/Compiler internally translates constant strings into the same object.
 
 ----------
 
@@ -390,7 +390,7 @@ Note that since the lock is not automatically released when the method exits, yo
 
 ### Conditional Variable
 
-The `Condition` interface factors out the `java.lang.Object` monitor methods `wait()/notify()/notifyAll()` into distinct objects to give the effect of having multiple wait-sets per object, by combining them with the use of arbitrary `Lock` implementations. Where `Lock` replaces `synchronized` methods and statements, `Condition` replaces `Object` monitor methods. 
+The `Condition` interface factors out the `java.lang.Object` monitor methods `wait()/notify()/notifyAll()` into distinct objects to give the effect of having multiple wait-sets per object, by combining them with the use of arbitrary `Lock` implementations. Where `Lock` replaces `synchronized` methods and statements, `Condition` replaces `Object` monitor methods.
 
 > **Note:** The main differences between `synchroinzed/wait/notify` and `Lock` are `Lock` API isn't block bound and we can have many groups of `wait/notify` by using many `Condition` instances.
 
@@ -448,10 +448,10 @@ The `java.util.concurrent.Semaphore` class is a counting semaphore. That means t
 - acquire()
 - release()
 
-The counting semaphore is initialized with a given number of "permits". For each call to `acquire()` a permit is taken by the calling thread. For each call to `release()` a permit is returned to the semaphore. Thus, at most N threads can pass the `acquire()` method without any `release()` calls, where N is the number of permits the semaphore was initialized with. The permits are just a simple counter. 
+The counting semaphore is initialized with a given number of "permits". For each call to `acquire()` a permit is taken by the calling thread. For each call to `release()` a permit is returned to the semaphore. Thus, at most N threads can pass the `acquire()` method without any `release()` calls, where N is the number of permits the semaphore was initialized with. The permits are just a simple counter.
 
 ### Semaphore Usage
-As semaphore typically has two uses: 
+As semaphore typically has two uses:
 - To guard a critical section against entry by more than N threads at a time.
 - To send signals between two threads.
 
@@ -467,13 +467,13 @@ semaphore.acquire();
 
 semaphore.release();
 ```
-#### Sending Signals Between Threads 
+#### Sending Signals Between Threads
 If we use a semaphore to send signals between threads, then we would typically have one thread call the `acquire()` method, and the other thread to call the `release()` method.
 
 If no permits are available, the `acquire()` call will block until a permit is released by another thread. Similarly, a `release()` calls is blocked if no more permits can be released into this semaphore.
 
 ### Fairness
-No guarantees are made about fairness of the threads acquiring permits from the Semaphore. That is, there is no guarantee that the first thread to call acquire() is also the first thread to obtain a permit. 
+No guarantees are made about fairness of the threads acquiring permits from the Semaphore. That is, there is no guarantee that the first thread to call acquire() is also the first thread to obtain a permit.
 
 To enforce fairness, the `Semaphore` class has a constructor that takes a boolean telling if the semaphore should enforce fairness.
 
@@ -495,13 +495,13 @@ Semaphore semaphore = new Semaphore(1, true);
 | Remove    |remove(o)|poll(o)|take()|poll(timeout, timeunit)|
 | Examine   |element()|peek()| N/A | N/A |
 
-- **Throws Exception** 
+- **Throws Exception**
 If the attempted operation is not possible immediately, an exception is thrown.
-- **Special Value** 
+- **Special Value**
 If the attempted operation is not possible immediately, a special value is returned (often true / false).
-- **Blocks** 
+- **Blocks**
 If the attempted operation is not possible immedidately, the method call blocks until it is.
-- **Times Out** 
+- **Times Out**
 If the attempted operation is not possible immedidately, the method call blocks until it is, but waits no longer than the given timeout. Returns a special value telling whether the operation succeeded or not (typically true / false).
 
 ----------
@@ -535,5 +535,3 @@ Here is a small toolkit of classes that support lock-free thread-safe programmin
 ## Reference
 http://tutorials.jenkov.com/java-concurrency/references.html
 https://www.udemy.com/java-multithreading
-
-@(Learning Cards)[Marxico|Java|Multi-threading]

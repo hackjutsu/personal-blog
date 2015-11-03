@@ -14,11 +14,11 @@ In this section we deal with how Javascritp handles files both synchronously and
 <!-- more -->
 
 #### Event Driven Non-Blocking I/O in V8 Javascript
-Javascript running in `V8`(which is embedded in the `Node`) is synchronous, it can only handle one thing at one time. However, the entire process of `Node` is asynchronous, because there are things happening in `libuv` and `V8` at the same time and all of these are inside `Node` itself. 
+Javascript running in `V8`(which is embedded in the `Node`) is synchronous, it can only handle one thing at one time. However, the entire process of `Node` is asynchronous, because there are things happening in `libuv` and `V8` at the same time and all of these are inside `Node` itself.
 
-When we are talking about `Node`, we will encounter a headline "**Event Driven Non-Blocking I/O in V8 javascript**". The `event driven` part means we are asking for `I/O`s to happen, and we get an event notification when they are done (`libuv`'s event loop is constantly checking for the events in its queue and calls their callback methods).  Those `I/O`s are happening in the OS level (opening files, connecting to database, retrieving and sending information over the internet etc.). Since our Javascript codes can continue to run, which means the `Node` will continue to do something else without waiting the current task to finish, we say this process is `Non-Blocking`. 
+When we are talking about `Node`, we will encounter a headline "**Event Driven Non-Blocking I/O in V8 javascript**". The `event driven` part means we are asking for `I/O`s to happen, and we get an event notification when they are done (`libuv`'s event loop is constantly checking for the events in its queue and calls their callback methods).  Those `I/O`s are happening in the OS level (opening files, connecting to database, retrieving and sending information over the internet etc.). Since our Javascript codes can continue to run, which means the `Node` will continue to do something else without waiting the current task to finish, we say this process is `Non-Blocking`.
 
-> Node lets us wirte synchronous codes in Javascript which is easy to manage, and still responds to things happening asynchronously. We just say "Please run these codes, and notify me when these codes done,  while keeping running the codes over there.". 
+> Node lets us wirte synchronous codes in Javascript which is easy to manage, and still responds to things happening asynchronously. We just say "Please run these codes, and notify me when these codes done,  while keeping running the codes over there.".
 
 `libuv` has its own website: http://libuv.org/ .
 
@@ -86,7 +86,7 @@ var greet = fs.readFile(__dirname + '/greet.txt', 'utf8', function(err, data) {
 });
 ```
 
-> **Error-First Callback**: Callbacks take an error object as their first parameter. null if no error, otherwise will contain an object defining the error. 
+> **Error-First Callback**: Callbacks take an error object as their first parameter. null if no error, otherwise will contain an object defining the error.
 
 #### Streams
 A stream is just a sequence of pieces of data. The data is broken up into chunks.
@@ -171,4 +171,3 @@ obj.greet().call({ name: 'Jane Doe'}, param1, param2);
 // object's name is now 'Jane Doe'
 obj.greet().apply({ name: 'Jane Doe'}, [param1, param2]);
 ```
-

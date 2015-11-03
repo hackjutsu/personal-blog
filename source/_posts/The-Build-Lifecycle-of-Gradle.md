@@ -30,8 +30,3 @@ Gradle determines the subset of the tasks, created and configured during the con
 - https://docs.gradle.org/current/userguide/build_lifecycle.html
 - https://goo.gl/z5nOVE
 - http://goo.gl/mqw9n1
-
-
-----------
-
-

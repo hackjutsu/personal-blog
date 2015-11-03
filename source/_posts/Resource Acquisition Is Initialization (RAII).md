@@ -2,7 +2,7 @@
 
 title: Resource Acquisition Is Initialization (RAII)
 date: 2015-10-07 18:00:45
-tags: 
+tags:
 - C++
 - RAII
 
@@ -12,10 +12,10 @@ tags:
 
 <!-- more -->
 
-**RAII** guarantees that the resource is available to any function that may access the object (resource availability is a class invariant). *It also guarantees that all resources are released when their controlling objects go out of scope, in reverse order of acquisition.* Likewise, if resource acquisition fails (the constructor exits with an exception), all resources acquired by every fully-constructed member and base subobject are released in reverse order of initialization. 
+**RAII** guarantees that the resource is available to any function that may access the object (resource availability is a class invariant). *It also guarantees that all resources are released when their controlling objects go out of scope, in reverse order of acquisition.* Likewise, if resource acquisition fails (the constructor exits with an exception), all resources acquired by every fully-constructed member and base subobject are released in reverse order of initialization.
 
 **RAII** can be summarized as follows:
-- encapsulate each resource into a class, where the constructor acquires the resource and establishes all class invariants or throws an exception if that cannot be done 
+- encapsulate each resource into a class, where the constructor acquires the resource and establishes all class invariants or throws an exception if that cannot be done
 - the destructor releases the resource and never throws exceptions
 
 always use the resource via an instance of a RAII-class that either
@@ -28,7 +28,7 @@ Classes with `open()` / `close()`, `lock()` / `unlock()`, or `init()` / `copyFro
 
 ``` C++
 std::mutex m;
-void bad() 
+void bad()
 {
     m.lock(); // acquire the mutex
     f(); // if f() throws an exception, the mutex is never released
@@ -60,10 +60,3 @@ The following C++ library classes or wrappers manage their own resources followi
 These C++ library classes that manage their own resources follow allocate their resources in constructors (which throw exceptions on errors), release them in their destructors (which never throw), and don't require explicit cleanup.
 
 Adapted from [articles on cppreference.com](http://en.cppreference.com/w/cpp/language/raii).
-
-
-----------
-
-
-@(Learning Cards)[Marxico|C++]
-

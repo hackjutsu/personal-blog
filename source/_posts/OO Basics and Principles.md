@@ -2,7 +2,7 @@
 
 title: OO Basics and Principles
 date: 2015-11-01 18:00:00
-tags: 
+tags:
 - Java
 - OOP
 
@@ -27,12 +27,12 @@ People are sometimes confused when talking about OOP and even simply think OOP e
 Object-oriented programming by definition uses objects, but not all of the associated techniques and structures are supported directly in languages which claim to support OOP. The features listed below are summaried from launguages considered strong OOP.
 
 ### Objects
-In OO design, objects are accessed like variables with complex internal structure. They provide a layer of **abstraction** which can be used to separate internal from external code. External code can use an object by calling a specific instance method with a certain set of input parameters, read an instance variable, or write to an instance variable. 
+In OO design, objects are accessed like variables with complex internal structure. They provide a layer of **abstraction** which can be used to separate internal from external code. External code can use an object by calling a specific instance method with a certain set of input parameters, read an instance variable, or write to an instance variable.
 
 ### Encapsulation
-If a class disallows calling code from accessing internal object data and forces access through methods only, this is a strong form of **abstraction** or information hiding known as `encapsulation`. 
+If a class disallows calling code from accessing internal object data and forces access through methods only, this is a strong form of **abstraction** or information hiding known as `encapsulation`.
 
-This is useful for preventing the external code from being concerned with the internal workings of an object. This facilitates code **refactoring**, for example allowing the author of the class to change how objects of that class represent their data internally without changing any external code. 
+This is useful for preventing the external code from being concerned with the internal workings of an object. This facilitates code **refactoring**, for example allowing the author of the class to change how objects of that class represent their data internally without changing any external code.
 
 It also encourages programmers to put all the code that is concerned with a certain set of data in the same class, which organizes it for easy comprehension by other programmers. Encapsulation is often used as a technique for encouraging **decoupling**.
 
@@ -70,8 +70,3 @@ IPizza myPizza = new PepperoniPizza();
 myPizza.Eat();
 ```
 Check out this [post](http://www.fatagnus.com/program-to-an-interface-not-an-implementation/) for more information.
-
-----------
-
-@(Learning Cards)[Marxico|Java|OO]
-

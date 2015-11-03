@@ -41,9 +41,3 @@ Whether execute the command is the biggest difference between an interpreter and
 [Wiki Compiler](https://en.wikipedia.org/wiki/Compiler)
 [Wiki Interpreter](https://en.wikipedia.org/wiki/Interpreter_%28computing%29)
 [Compiler vs Interpreter](http://www.c4learn.com/c-programming/compiler-vs-interpreter/)
-
-
-----------
-
-
-@(Learning Cards)[Marxico]

@@ -36,8 +36,3 @@ JIT is part of the JVM which takes Java bytecodes and compiles it to the native 
 
 There is a pretty nice explanation from [IBM Knowledge Center](https://www-01.ibm.com/support/knowledgecenter/SSYKE2_7.0.0/com.ibm.java.aix.71.doc/diag/understanding/jit_overview.html):
 > In practice, methods are not compiled the first time they are called. For each method, the JVM maintains a call count, which is incremented every time the method is called. The JVM interprets a method until its call count exceeds a JIT compilation threshold. Therefore, often-used methods are compiled soon after the JVM has started, and less-used methods are compiled much later, or not at all. The JIT compilation threshold helps the JVM start quickly and still have improved performance. The threshold has been carefully selected to obtain an optimal balance between startup times and long term performance.
-
-
-
-
-@(Learning Cards)[Marxico|Java]

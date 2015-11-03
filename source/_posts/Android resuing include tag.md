@@ -89,9 +89,3 @@ To avoid including such a redundant view group, you can instead use the <merge> 
 </merge>
 ```
 Now, when you include this layout in another layout (using the `<include/>` tag), the system ignores the `<merge>` element and places the two buttons directly in the layout, in place of the `<include/>` tag.
-
-----------
-
-@(Learning Cards)[Marxico|Android]
-
-

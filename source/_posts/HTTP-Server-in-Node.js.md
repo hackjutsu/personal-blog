@@ -1,7 +1,7 @@
 # HTTP Server in Node.js
 title: HTTP Server in Node.js
 date: 2015-09-29 18:00:00
-tags: 
+tags:
 - Javascript
 - Node.js
 
@@ -71,7 +71,7 @@ var server = http.createServer(function(req, res){
         case 'DELETE':
             var path = url.parse(req.url).pathname;
             var i = parseInt(path.slice(1), 10);
-            
+
             if (isNaN(i)) {
                 res.statusCode = 400;
                 res.end('Invalid item id');
@@ -85,7 +85,7 @@ var server = http.createServer(function(req, res){
             break;
     }
 });
-            
+
 server.listen(3000);
 ```
 Test the codes above using `cURL`. The DELETE request will delete the item with index "i".
@@ -96,5 +96,3 @@ $ curl http://localhost:3000
 $ curl -X "DELETE" http://localhost:3000/1
 $ curl http://localhost:3000
 ```
-
-@(Learning Cards)[JavaScript|NodeJS|Marxico]

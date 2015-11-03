@@ -2,7 +2,7 @@
 
 title: Maven POM in Action
 date: 2015-10-30 18:00:00
-tags: 
+tags:
 - Maven
 - Java
 
@@ -11,7 +11,7 @@ tags:
 
 A `Project Object Model` or `POM` is the fundamental unit of work in Maven. It is an XML file that contains information about the project and configuration details used by Maven to build the project. It contains default values for most projects. For example, the source directory, which is `src/main/java`; the test source directory, which is `src/test/java`; and so on.
 
-POM also contains the goals and plugins. While executing a task or goal, Maven looks for the POM in the current directory. It reads the POM, gets the needed configuration information, then executes the goal. 
+POM also contains the goals and plugins. While executing a task or goal, Maven looks for the POM in the current directory. It reads the POM, gets the needed configuration information, then executes the goal.
 <!--more-->
 
 
@@ -61,7 +61,7 @@ This is a listing of the elements directly under the POM's project element.
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                       http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
- 
+
   <!-- The Basics -->
   <groupId>...</groupId>
   <artifactId>...</artifactId>
@@ -72,11 +72,11 @@ This is a listing of the elements directly under the POM's project element.
   <dependencyManagement>...</dependencyManagement>
   <modules>...</modules>
   <properties>...</properties>
- 
+
   <!-- Build Settings -->
   <build>...</build>
   <reporting>...</reporting>
- 
+
   <!-- More Project Information -->
   <name>...</name>
   <description>...</description>
@@ -86,7 +86,7 @@ This is a listing of the elements directly under the POM's project element.
   <organization>...</organization>
   <developers>...</developers>
   <contributors>...</contributors>
- 
+
   <!-- Environment Settings -->
   <issueManagement>...</issueManagement>
   <ciManagement>...</ciManagement>
@@ -108,7 +108,7 @@ This is a listing of the elements directly under the POM's project element.
 
 ### Maven Coordinates
  `groupId:artifactId:version` are all required fields (although, groupId and version need not be explicitly defined if they are inherited from a parent - more on inheritance later). The three fields act much like an address and timestamp in one. This marks a specific place in a repository, acting like a coordinate system for Maven projects.
- 
+
 ### POM Relationships
 
 #### Dependencies
@@ -128,7 +128,7 @@ Dependencies' version element define version requirements, used to compute effec
 
 ##### More about Dependencies
 [Check out this post for more about dependencies](https://maven.apache.org/pom.html#Dependencies).
- 
+
 #### Inheritance and Aggregations
 [Project Inheritance](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html#Project_Inheritance)
 [Project Aggregation](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html#Project_Aggregation)
@@ -136,19 +136,19 @@ Dependencies' version element define version requirements, used to compute effec
 ### Properties
 Properties are the last required piece in understanding POM basics. Maven properties are value placeholder, like properties in Ant. Their values are accessible anywhere within a POM by using the notation `${X}`, where `X` is the property. They come in five different styles:
 
-- **env.X**: Prefixing a variable with "env." will return the shell's environment variable. 
+- **env.X**: Prefixing a variable with "env." will return the shell's environment variable.
 For example, `${env.PATH}` contains the PATH environment variable.
 
 
-- **project.x**: A dot (.) notated path in the POM will contain the corresponding element's value. 
+- **project.x**: A dot (.) notated path in the POM will contain the corresponding element's value.
 For example: `<project><version>1.0</version></project>` is accessible via `${project.version}`.
 
 
-- **settings.x**: A dot (.) notated path in the `settings.xml` will contain the corresponding element's value. 
+- **settings.x**: A dot (.) notated path in the `settings.xml` will contain the corresponding element's value.
 For example: `<settings><offline>false</offline></settings>` is accessible via `${settings.offline}`.
 
 
-- **Java System Properties**: 
+- **Java System Properties**:
 All properties accessible via `java.lang.System.getProperties()` are available as POM properties, such as `${java.home}`.
 
 
@@ -162,9 +162,9 @@ All properties accessible via `java.lang.System.getProperties()` are available a
 Beyond the basics of the POM given above, there are two more elements that must be understood before claiming basic competency of the POM. They are the `build` element, that handles things like declaring our project's directory structure and managing plugins; and the `reporting` element, that largely mirrors the build element for reporting purposes.
 
 ### Build
-The build element is conceptually divided into two parts: 
-- `BaseBuild` type which contains the set of elements common to both build elements. 
-- `Build` type, which contains the `BaseBuild` set as well as more elements for the top level definition. 
+The build element is conceptually divided into two parts:
+- `BaseBuild` type which contains the set of elements common to both build elements.
+- `Build` type, which contains the `BaseBuild` set as well as more elements for the top level definition.
 >**Note:** These different build elements may be denoted **project build** and **profile build**.
 ``` xml
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -174,7 +174,7 @@ The build element is conceptually divided into two parts:
   ...
   <!-- "Project Build" contains more elements than just the BaseBuild set -->
   <build>...</build>
- 
+
   <profiles>
     <profile>
       <!-- "Profile Build" contains a subset of "Project Build"s elements -->
@@ -224,7 +224,7 @@ Resources are not (usually) code. They are not compiled, but are items meant to 
     ...
   </build>
 ```
-`testResources` are similar to resource elements, but are naturally used during test phases. 
+`testResources` are similar to resource elements, but are naturally used during test phases.
 ##### Plugins & Plugin Management
 [Check out this post for more information.](https://maven.apache.org/pom.html#Plugins)
 
@@ -246,16 +246,16 @@ If the values of a `*Directory` element above is set as an absolute path (when t
 ##### Extensions
 [Check out this post for more information about Extensions](https://maven.apache.org/pom.html#Extensions).
 ### Report
-Reporting contains the elements that correspond specifically for the site generation phase. 
+Reporting contains the elements that correspond specifically for the site generation phase.
 [Check out this post for more information about Report](https://maven.apache.org/pom.html#Reporting).
 
 ----------
 
 ## More Project Information
-Although the above information is enough to get a firm grasp on POM authoring, there are far more elements to make developer's live easier. Many of these elements are related to site generation, but like all POM declarations, they may be used for anything, depending upon how certain plugins use it. 
+Although the above information is enough to get a firm grasp on POM authoring, there are far more elements to make developer's live easier. Many of these elements are related to site generation, but like all POM declarations, they may be used for anything, depending upon how certain plugins use it.
 
 ### License
-A project should list only licenses that may apply directly to this project, and not list licenses that apply to this project's dependencies. Maven currently does little with these documents other than displays them on generated sites. 
+A project should list only licenses that may apply directly to this project, and not list licenses that apply to this project's dependencies. Maven currently does little with these documents other than displays them on generated sites.
 ``` xml
 <licenses>
   <license>
@@ -377,5 +377,3 @@ mvn -Dbuild=release release:perform
 
 ## Reference
 This post is adapted from the [Maven official document](https://maven.apache.org/pom.html) as reading notes. Please refer to the original document for the most up-to-date information.
-
-@(Learning Cards)[Marxico|Maven]

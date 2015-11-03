@@ -1,7 +1,7 @@
-# Retrofit 2.0 Reference 
+# Retrofit 2.0 Reference
 title: Retrofit 2.0 Reference
 date: 2015-10-06 18:00:45
-tags: 
+tags:
 - Android
 - Retrofit
 
@@ -9,12 +9,12 @@ tags:
 
 **Retrofit** is one of the most popular Android http library. In [its latest 2.0 version](http://square.github.io/retrofit/), it comes with many new features over its earlier versions, for example, the ability to cancel an ongoing HTTP request or the ability to plugin multiple serialization converters.
 
-Here is a quick reference for adopting **Retrofit 2.0** into our Android app. 
+Here is a quick reference for adopting **Retrofit 2.0** into our Android app.
 <!-- more -->
 ## A Simple Example
 Here is an [example](https://github.com/registercosmo/RetrofitDemo) about downloading the name of the contributors and the number of their commits from the [Github Retrofit project](https://github.com/square/retrofit).
 
-We use the Github public API for retrieving contributors' information. 
+We use the Github public API for retrieving contributors' information.
 > api.github.com/repos/{owner}/{repo}/contributors
 
 In our case, the owner is `square` and the repo is `retrofit`.
@@ -60,7 +60,7 @@ Retrofit retrofit = new Retrofit.Builder()
         .baseUrl("https://api.github.com")
         .addConverterFactory(GsonConverterFactory.create())
         .build();
-        
+
 // Create an instance of our GitHub API interface.
 GitHubService github = retrofit.create(GitHubService.class);
 
@@ -68,7 +68,7 @@ GitHubService github = retrofit.create(GitHubService.class);
 Call<List<Contributor>> call = github.contributors("square", "retrofit");
 ```
 ### Synchronous Request
-Use the `execute()` method to send a **synchronous** request. 
+Use the `execute()` method to send a **synchronous** request.
 ``` java
 List<Contributor> contributors = call.execute().body();
 for (Contributor contributor : contributors) {
@@ -212,7 +212,7 @@ Retrofit retrofit = new Retrofit.Builder()
 ```
 A call to chain.proceed(request) is a critical part of each interceptor’s implementation. This simple-looking method is where all the HTTP work happens, producing a response to satisfy the request.
 
-There are [two kinds of interceptors in OkHttp](https://github.com/square/okhttp/wiki/Interceptors):  `Application Interceptors` and `Network Interceptors`. 
+There are [two kinds of interceptors in OkHttp](https://github.com/square/okhttp/wiki/Interceptors):  `Application Interceptors` and `Network Interceptors`.
 
 ``` java
 // Application Interceptors
@@ -225,7 +225,7 @@ client.networkInterceptors().add(new LoggingInterceptor());
 ```
 
 ## Plugable Serialization Converter
-In **Retrofit 2.0**, `Converter` is not included in the package. We need to plug a `Converter` in ourselves or `Retrofit` will be able to accept only the `String` result. 
+In **Retrofit 2.0**, `Converter` is not included in the package. We need to plug a `Converter` in ourselves or `Retrofit` will be able to accept only the `String` result.
 
 To parse the JSON response, we need to plug in the Gson Converter.
 ``` java
@@ -237,7 +237,7 @@ Retrofit retrofit = new Retrofit.Builder()
         .baseUrl("http://api.nuuneoi.com/base/")
         .addConverterFactory(GsonConverterFactory.create())
         .build();
- 
+
 service = retrofit.create(APIService.class);
 ```
 
@@ -255,6 +255,3 @@ http://stackoverflow.com/questions/32942661/how-can-retrofit-2-0-parse-nested-js
 - [Tutorial 1](https://realm.io/news/droidcon-jake-wharton-simple-http-retrofit-2/)
 - [Tutorial 2](http://blog.robinchutaux.com/blog/a-smart-way-to-use-retrofit/)
 - [Tutorial 3](http://inthecheesefactory.com/blog/retrofit-2.0/en)
-
-@(Learning Cards)[Marxico|Android]
-

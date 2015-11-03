@@ -97,9 +97,3 @@ Pick up the [Backlight-for-XCode](https://github.com/limejelly/Backlight-for-XCo
 ### Bookmarks
 
 Pick up the [XcodeBookmark](https://github.com/nicoster/XcodeBookmark) plugin in Alcatraz.
-
-
-----------
-
-
-@(Learning Cards)[Marxico|Legacy Tools]

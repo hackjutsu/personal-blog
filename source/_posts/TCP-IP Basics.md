@@ -137,8 +137,3 @@ CIDR notation is a compact representation of an IP address and its associated ro
 For example, in CIDR, `210.210.210.0/26` will have a network address of `210.210.210.0` and broadcast address of `210.210.210.63`. Any devices will need to sit between `210.210.210.1` and `210.210.210.62`. In ICDR, the previous classful network can be simply represented as `XX.XX.XX.XX/8` for A, `XX.XX.XX.XX/16` for B and `XX.XX.XX.XX/24` for C.
 
 The subnets will be their own segment entirely, and will not be able to communicate with eachother without using routes. Devices in a subnet will only be able to "see" other devices on their own localized smaller subnet.
-
-----------
-
-
-@(Learning Cards)[Marxico|Full-Stack]

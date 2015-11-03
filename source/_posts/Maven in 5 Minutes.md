@@ -158,8 +158,3 @@ java -cp target/hackjustuDemo-1.0-SNAPSHOT.jar ninja.hackjustu.App
 
 ## Reference
 http://www.mkyong.com/maven/how-to-create-a-java-project-with-maven/
-
-----------
-
-
-@(Learning Cards)[Marxico|Java|Legacy Tools]
