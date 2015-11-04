@@ -8,7 +8,7 @@ subtitle: The road to a Hacker.
 description: 事未成時，小心翼翼。事將成時，大膽無懼。事已成時，大意大敵。
 author: Cosmo
 language: en
-timezone: 
+timezone:
 
 # Favicon
 favicon: /favicon.ico
@@ -80,8 +80,12 @@ swiftype_key : 2zH5b6xq5JxBYRwuzg6Z
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
-  type: heroku
-  repo: https://git.heroku.com/hackjustu.git
-  message: 
+  type: git
+  repo: https://github.com/registercosmo/registercosmo.github.io.git
+  message:
+
+#  type: heroku
+#  repo: https://git.heroku.com/hackjustu.git
+#  message:
 
 since: 2015

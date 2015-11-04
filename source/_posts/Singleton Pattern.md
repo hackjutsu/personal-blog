@@ -9,7 +9,6 @@ tags:
 ---
 
 
-## Motivation
 Sometimes it's important to have only one instance for a class. For example, in a system there should be only one window manager (or only a file system or only a print spooler). Usually singletons are used for centralized management of internal or external resources and they provide a global point of access to themselves.
 
 <!--more-->

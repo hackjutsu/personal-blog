@@ -9,7 +9,6 @@ tags:
 ---
 
 
-## Motivation
 In some cases, we need an one-to-many relationship between objects. If one object is modified, its depenedent objects are to be notified automatically.
 
 <!--more-->
@@ -18,8 +17,9 @@ In some cases, we need an one-to-many relationship between objects. If one objec
 - Defines a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically.
 
 ## Implementation
-![Class Diagram of Observer Pattern](http://i.imgur.com/kxjQhYg.png)
+![Class Diagram of Observer Pattern](http://i.imgur.com/RcDQFgP.png)
 ``` java
+// Observable.java
 public interface Observable {
     void registerObserver(Observer o);
     void removeObserver(Observer o);
@@ -27,11 +27,13 @@ public interface Observable {
 }
 ```
 ``` java
+// Observer.java
 public interface Observer {
     void update(Data data);
 }
 ```
 ``` java
+// WeatherData.java
 public class WeatherData implements Observable {
 
     public WeatherData() {
