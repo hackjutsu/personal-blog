@@ -81,7 +81,7 @@ swiftype_key : 2zH5b6xq5JxBYRwuzg6Z
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/registercosmo/registercosmo.github.io.git
+  repo: https://github.com/hackjustu/hackjustu.github.io.git
   message:
 
 #  type: heroku
