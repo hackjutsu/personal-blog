@@ -106,5 +106,7 @@ Base Icecream + cruncy nuts + sweet honey
 The `java.io` classes are based on Decorator.
 ![Head First Design Pattern ---- Decorator Pattern](http://i.imgur.com/e1FtVTr.png)
 
+This example also points out one of the downsides of the Decorator Pattern: designs often result in a large number of small classes that can be overwhelming.
+
 ## Reference
 http://javapapers.com/design-patterns/decorator-pattern/
