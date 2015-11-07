@@ -21,7 +21,7 @@ An example of an Abstract Factory in use could be UI toolkits. Across Windows, M
 `Window` is our AbstractProduct.
 ``` java
 //Our AbstractProduct
-public interface Window{
+public interface Window {
     public void setTitle(String text);
     public void repaint();
 }
@@ -29,11 +29,14 @@ public interface Window{
 This is our concrete product for Microsoft Windows.
 ``` java
 //ConcreteProductA1
-public class MSWindow implements Window{
-    public void setTitle(String text){
+public class MSWindow implements Window {
+    @Override
+    public void setTitle(String text) {
       //MS Windows specific behaviour
     }
-    public void repaint(){
+
+    @Override
+    public void repaint() {
       //MS Windows specific behaviour
     }
 }
@@ -41,11 +44,14 @@ public class MSWindow implements Window{
 This is our concrete product for Mac OSX.
 ``` java
 //ConcreteProductA2
-public class MacOSXWindow implements Window{
-    public void setTitle(String text){
+public class MacOSXWindow implements Window {
+    @Override
+    public void setTitle(String text) {
       //Mac OSX specific behaviour
     }
-    public void repaint(){
+
+    @Override
+    public void repaint() {
       //Mac OSX specific behaviour
     }
 }
@@ -53,16 +59,17 @@ public class MacOSXWindow implements Window{
 Now we need to provide our AbstractFactory.
 ``` java
 //AbstractFactory
-public interface AbstractWidgetFactory{
+public interface AbstractWidgetFactory {
     public Window createWindow();
 }
 ```
 Next we need to provide ConcreteFactory implementations for MS Windows.
 ``` java
 //ConcreteFactory1
-public class MsWindowsWidgetFactory implements AbstractWidgetFactory{
-    //create an MSWindow
-    public Window createWindow(){
+public class MsWindowsWidgetFactory implements AbstractWidgetFactory {
+    @Override
+    public Window createWindow() {
+        //create an MSWindow
         MSWindow window = new MSWindow();
         return window;
     }
@@ -71,9 +78,10 @@ public class MsWindowsWidgetFactory implements AbstractWidgetFactory{
 And for Mac OSX.
 ``` java
 //ConcreteFactory2
-public class MacOSXWidgetFactory implements AbstractWidgetFactory{
-    //create a MacOSXWindow
-    public Window createWindow(){
+public class MacOSXWidgetFactory implements AbstractWidgetFactory {
+    @Override
+    public Window createWindow() {
+        //create a MacOSXWindow
         MacOSXWindow window = new MacOSXWindow();
         return window;
     }
@@ -83,13 +91,13 @@ Here is our client to take advantage of all this functionality.
 ``` java
 //Client
 public class Main{
-    public static void main(String[] args){
+    public static void main(String[] args) {
         AbstractWidgetFactory widgetFactory = null;
         //check what platform we're on
-        if(Platform.currentPlatform()=="MACOSX"){
-            widgetFactory = new MacOSXWidgetFactory();
+        if(Platform.currentPlatform()=="MACOSX") {
+            widgetFactory  = new MacOSXWidgetFactory();
         } else {
-            widgetFactory = new MsWindowsWidgetFactory();
+            widgetFactory  = new MsWindowsWidgetFactory();
         }
         Window window = widgetFactory.createWindow();
         window.setTitle("New Window");
