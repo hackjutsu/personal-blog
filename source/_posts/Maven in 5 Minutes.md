@@ -4,6 +4,8 @@ date: 2015-10-29 18:00:00
 tags:
 - Maven
 - Java
+categories:
+- Build Tools
 
 ---
 

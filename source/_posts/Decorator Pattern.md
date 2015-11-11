@@ -4,6 +4,8 @@ date: 2015-11-04 00:29:00
 tags:
 - Design Pattern
 - Java
+categories:
+- Design Pattern
 
 ---
 
@@ -14,7 +16,7 @@ Extending an objects functionality can be done statically (at compile time) by u
 - Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.
 - Client-specified embellishment of a core object by recursively wrapping it.
 
-## Implemantation
+## Implementation
 ![Class Diagram of Decorator Pattern](http://i.imgur.com/n89NTaF.png)
 Below is an interface depicting an icecream
 ``` java
@@ -109,4 +111,4 @@ The `java.io` classes are based on Decorator.
 This example also points out one of the downsides of the Decorator Pattern: designs often result in a large number of small classes that can be overwhelming.
 
 ## Reference
-http://javapapers.com/design-patterns/decorator-pattern/
+[JavaPapers](http://javapapers.com/design-patterns/decorator-pattern/)

@@ -5,6 +5,8 @@ date: 2015-11-02 15:56:00
 tags:
 - Design Pattern
 - Java
+categories:
+- Design Pattern
 
 ---
 

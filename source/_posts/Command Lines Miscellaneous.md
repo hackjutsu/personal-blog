@@ -2,6 +2,8 @@
 title: Command Lines Miscellaneous
 date: 2015-10-13 18:00:00
 tags: CommandLine
+categories:
+- Command Lines
 
 ---
 

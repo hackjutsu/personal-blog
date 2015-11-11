@@ -4,6 +4,8 @@ date: 2015-11-02 23:01:00
 tags:
 - Design Pattern
 - Java
+categories:
+- Design Pattern
 
 ---
 
@@ -15,7 +17,7 @@ Simple Factory is one of most used design pattern in Java. It allows interfaces 
 - Refers to the newly created object through a common interface.
 
 ## Implementation
-![Class Diagram of Simple Factory](http://i.imgur.com/TMvpcHd.png)
+![Class Diagram of Simple Factory](http://i.imgur.com/zYv6h8X.png)
 The client needs a product, but instead of creating it directly using the new operator, it asks the factory object for a new product, providing the information about the type of object it needs.
 ``` java
 // SimpleProductFactory.java

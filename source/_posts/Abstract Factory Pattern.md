@@ -4,6 +4,8 @@ date: 2015-11-05 00:29:00
 tags:
 - Design Pattern
 - Java
+categories:
+- Design Pattern
 
 ---
 
@@ -105,4 +107,4 @@ public class Main{
 }
 ```
 ## Reference
-https://dzone.com/articles/design-patterns-abstract-factory
+[DZone](https://dzone.com/articles/design-patterns-abstract-factory)

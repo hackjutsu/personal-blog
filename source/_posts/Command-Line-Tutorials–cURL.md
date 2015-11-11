@@ -2,6 +2,8 @@
 title: Command Line Tutorials – cURL
 date: 2015-09-29 18:00:45
 tags: CommandLine
+categories:
+- Command Lines
 
 ---
 

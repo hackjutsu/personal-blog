@@ -5,6 +5,8 @@ date: 2015-11-07 11:36:00
 tags:
 - Design Pattern
 - Java
+categories:
+- Design Pattern
 
 ---
 
@@ -63,7 +65,7 @@ public interface Command {
     // void load();// Optional method to load the logged commands.
 }
 ```
-The `ConcreteCommand` extends the `Command` interface, implementing the `execute()` method by invoking the corresponding operations on `Receiver`. It defines a link between the **Receiver** and the command action.
+The `ConcreteCommand` extends the `Command` interface, implementing the `execute()` method by invoking the corresponding operations on `Receiver`. It defines a link between the `Receiver` and the command action.
 ```java
 // CommandA.java
 public class CommandA implements Command{
@@ -107,7 +109,7 @@ public class CommandB implements Command {
     private ReceiverB receiverB;
 }
 ```
-The `NoCommand` object is an example of a null object. A null object is useful when we don't have a meaningful object to return, and yet we want to remove the responsibility of handling **null** from the client.
+The `NoCommand` object is an example of a null object. A null object is useful when we don't have a meaningful object to return, and yet we want to remove the responsibility of handling **null** from the client. Sometimes, this is called [Null Object Pattern](http://www.tutorialspoint.com/design_pattern/null_object_pattern.htm).
 ```java
 // NoCommand.java
 public class NoCommand implements Command {

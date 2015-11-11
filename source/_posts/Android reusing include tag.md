@@ -4,6 +4,8 @@ title: Re-using Layouts with tag "include" in Android
 date: 2015-10-19 18:00:00
 tags:
 - Android
+categories:
+- Android
 
 ---
 

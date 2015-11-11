@@ -5,6 +5,8 @@ date: 2015-11-01 20:01:00
 tags:
 - Design Pattern
 - Java
+categories:
+- Design Pattern
 
 ---
 
@@ -71,4 +73,4 @@ public class StrategyPatternDemo {
 ```
 
 ## Reference
-http://www.tutorialspoint.com/design_pattern/strategy_pattern.htm
+[TutorialsPoint](http://www.tutorialspoint.com/design_pattern/strategy_pattern.htm)

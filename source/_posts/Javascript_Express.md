@@ -1,6 +1,8 @@
 title: Javascript Express
 date: 2015-09-27 18:00:45
 tags: Javascript
+categories:
+- MEAN
 
 ---
 
@@ -13,7 +15,7 @@ In this section, we talk about the [Express](http://expressjs.com/) web framewor
 <!-- more -->
 
 #### Routes
-[Routing](http://expressjs.com/guide/routing.html) refers to the definition of end points (URIs) to an application and how it responds to client requests. 
+[Routing](http://expressjs.com/guide/routing.html) refers to the definition of end points (URIs) to an application and how it responds to client requests.
 
 A route is a combination of a URI, a HTTP request method (GET, POST, and so on), and one or more handlers for the endpoint. The following is an example of an Express server with basic routes.
 ``` javascript
@@ -115,7 +117,7 @@ A 	quick example about EJS syntax. In the following example, `<%`, and `%>` are 
 ```
 Here is a more complicated example. First, let's create the template file `views/person.ejs`:
 ``` html
-<html>   
+<html>
     <head>
         <link href=assets/style.css type=text/css rel=stylesheet />
     </head>
@@ -143,7 +145,7 @@ app.get('/person/:id', function (req, res) {
 
 app.listen(port);
 ```
-Run `node server.js` and go to `localhost:3000/person/12345` to see the result. Notice that the `<%= ID %>` is replaced by the string "12345" we put in the path. 
+Run `node server.js` and go to `localhost:3000/person/12345` to see the result. Notice that the `<%= ID %>` is replaced by the string "12345" we put in the path.
 
 Let's look more closely at `server.js`. Line `app.set('view engine', 'ejs')` tells the Express to use files with extension `.ejs` as template for rendering. By default, Express will search the folder `./views`. Line `res.render('person', { ID: req.params.id })` tells Express to search for the template file with the name `person` and the extension `.ejs`, and then replace the placeholder `ID` in the template with the value of `req.params.id`.
 
@@ -169,7 +171,7 @@ app.post('/person', urlencodedParser, function(req, res) {
 });
 ```
 Add the following html codes to create a form which posts data to `/person`.
-``` html 
+``` html
 <form method="POST" action="/person">
 	First name: <input type="text" id="firstname" name="firstname" /><br />
 	Last name: <input type="text" id="lastname" name="lastname" /><br />
@@ -180,7 +182,7 @@ If the form sends the body data as a JSON data, we can create a JSON parser from
 ``` javascript
 var bodyParser = require('body-parser');
 var urlencodeParser = bodyParser.urlencoded({ extended:false });
-var jsonParser = bodyParser.json(); 
+var jsonParser = bodyParser.json();
 
 // some codes to create an Express app
 

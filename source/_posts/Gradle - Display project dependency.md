@@ -5,6 +5,8 @@ tags:
 - Gradle
 - Java
 - Android
+categories:
+- Build Tools
 
 ---
 

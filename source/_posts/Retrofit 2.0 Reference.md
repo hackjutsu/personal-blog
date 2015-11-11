@@ -4,7 +4,8 @@ date: 2015-10-06 18:00:45
 tags:
 - Android
 - Retrofit
-
+categories:
+- Android
 ---
 
 **Retrofit** is one of the most popular Android http library. In [its latest 2.0 version](http://square.github.io/retrofit/), it comes with many new features over its earlier versions, for example, the ability to cancel an ongoing HTTP request or the ability to plugin multiple serialization converters.

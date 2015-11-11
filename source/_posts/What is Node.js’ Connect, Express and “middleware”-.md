@@ -7,6 +7,8 @@ tags:
 - Javascript
 - Express
 - Connect
+categories:
+- MEAN
 
 ---
 

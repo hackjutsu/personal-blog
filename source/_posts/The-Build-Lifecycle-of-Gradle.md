@@ -1,6 +1,9 @@
 title: The Build Lifecycle of Gradle
 date: 2015-09-25 00:27:57
 tags: Gradle
+categories:
+- Build Tools
+
 ---
 
 We said earlier that the core of Gradle is a language for dependency based programming. In Gradle terms this means that you can define tasks and dependencies between tasks. Gradle guarantees that these tasks are executed in the order of their dependencies, and that each task is executed only once. These tasks form a Directed Acyclic Graph. There are build tools that build up such a dependency graph as they execute their tasks. Gradle builds the complete dependency graph before any task is executed.

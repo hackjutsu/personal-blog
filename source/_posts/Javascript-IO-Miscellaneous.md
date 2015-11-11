@@ -1,6 +1,9 @@
 title: Javascript I/O Miscellaneous
 date: 2015-09-26 23:10:54
 tags: Javascript
+categories:
+- MEAN
+
 ---
 In this section we deal with how Javascritp handles files both synchronously and asynchronously. The following topics will get involved.
 - Event Driven Non-Blocking I/O in V8 Javascript
