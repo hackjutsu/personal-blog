@@ -1,9 +1,11 @@
 # Command Line Tutorials – cURL
 title: Command Line Tutorials – cURL
 date: 2015-09-29 18:00:45
-tags: CommandLine
 categories:
 - Command Lines
+tags: 
+- CommandLine
+- OSX
 
 ---
 
@@ -18,7 +20,7 @@ categories:
 ``` bash
 curl --data "birthyear=1905&press=%20OK%20"  http://www.example.com/when.cgi
 ```
-This kind of POST will use the Content-Type application/x-www-form-urlencoded and is the most widely used POST kind. The data you send to the server MUST already be properly encoded, `curl` will not do that for you.
+This kind of POST will use the Content-Type application/x-www-form-urlencoded and is the most widely used POST kind. The data you send to the server MUST already be properly encoded, `curl` will not do that for you. 
 
 Recent `curl` versions can in fact url-encode POST data for you, like this:
 ``` bash
@@ -31,7 +33,7 @@ curl "http://www.hotmail.com/when/junk.cgi?birthyear=1905&press=OK"
 ```
 
 ### Redirects
-By default `curl` doesn’t follow the HTTP Location headers. It is also termed as Redirects. We can insists `curl` to follow the redirection using -L option, as shown below.
+By default `curl` doesn’t follow the HTTP Location headers. It is also termed as Redirects. We can insists `curl` to follow the redirection using -L option, as shown below. 
 ``` bash
 $ curl -L http://www.redirector.com
 ```
@@ -50,3 +52,4 @@ $ curl -u username:password URL
 ### More about curl
 http://curl.haxx.se/docs/httpscripting.html
 http://www.thegeekstuff.com/2012/04/curl-examples/
+

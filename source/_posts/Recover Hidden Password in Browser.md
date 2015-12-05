@@ -8,7 +8,7 @@ tags:
 ---
 
 
-Sometimes we might forget our password,  but it is stored in our browser. The password is hidden by "dots" and we cannot get its value directly. Even the trick `"copy and paste to a text file"` doesn't help here.
+Sometimes we might forget our password,  but it is stored in our browser. The password is hidden as "dots" so we cannot get its value directly. Even the trick `"copy and paste to a text file"` doesn't help here.
 
 <!--more-->
 
