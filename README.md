@@ -12,4 +12,4 @@ www.hackjustu.ninja
 - Blog Theme: [NexT.Mist](https://github.com/iissnan/hexo-theme-next)
 - Blog Host: [Github](https://github.com/hackjustu/hackjustu.github.io)
 - Sarch Engine: [Swiftype](https://swiftype.com/)
-- Mardown Tool: [Marxico](https://marxi.co/)
+- Markdown Tool: [Marxico](https://marxi.co/)
