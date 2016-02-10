@@ -13,6 +13,12 @@ timezone:
 # Favicon
 favicon: /favicon.ico
 
+# Google Analytics
+google_analytics: UA-72207664-1
+
+# Disqus
+disqus_shortname: hackjustu
+
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://hackjustu.ninja

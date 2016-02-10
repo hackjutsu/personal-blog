@@ -21,18 +21,18 @@ Sometimes it's important to have only one instance for a class. For example, in 
 ## Implementation
 The implementation involves a static member in the "Singleton" class, a private constructor and a static public method that returns a reference to the static member.
 
-Instead of marking the `getInstance()` as `synchronized`, we use “[double-checked locking](https://en.wikipedia.org/wiki/Double-checked_locking)” to reduce the use of synchronization in `getInstance()`. 
+Instead of marking the `getInstance()` as `synchronized`, we use “[double-checked locking](https://en.wikipedia.org/wiki/Double-checked_locking)” to reduce the use of synchronization in `getInstance()`.
 ``` java
 public class Singleton {
     private volatile static Singleton uniqueInstance;
-    // The volatile keyword makes sure multi threads handle the 
+    // The volatile keyword makes sure multi threads handle the
     // uniqueInstance variable correctly
 
     private Singleton();
 
     public static Singleton getInstance() {
         if (uniqueInstance == null) {
-        // Check for an instance and if there isn't one, enter a 
+        // Check for an instance and if there isn't one, enter a
         // synchronized block
             synchronized (Singleton.class) {
                 if (uniqueInstance == null) {
@@ -40,32 +40,32 @@ public class Singleton {
                     // create an instance
                     uniqueInstance = new Singleton();
                 }
-            } 
+            }
         }
         return uniqueInstance;
     }
 }
 ```
 
-> **Note:** Double-checked locking doesn’t work in Java 1.4 or earlier! 
+> **Note:** Double-checked locking doesn’t work in Java 1.4 or earlier!
 
 ## Double-Checked Locking is Broken
 
 ### Background
 Double-Checked Locking is widely cited and used as an efficient method for implementing lazy initialization in a multithreaded environment.
 
-However, the following snippet won't work in the presence of either optimizing compilers or shared memory multiprocessors. 
+However, the following snippet won't work in the presence of either optimizing compilers or shared memory multiprocessors.
 ``` java
 // Broken multithreaded version
 // "Double-Checked Locking" idiom
-class Foo { 
+class Foo {
     private Helper helper = null;
     public Helper getHelper() {
-        if (helper == null) 
+        if (helper == null)
             synchronized(this) {
-            if (helper == null) 
+            if (helper == null)
             helper = new Helper();
-        }    
+        }
       return helper;
   }
   // other functions and members...
@@ -103,3 +103,27 @@ From the wikipedia on this topic:
 >Since the class initialization phase is guaranteed by the JLS to be serial, i.e., non-concurrent, no further synchronization is required in the static getInstance method during loading and initialization. And since the initialization phase writes the static variable INSTANCE in a serial operation, all subsequent concurrent invocations of the getInstance will return the same correctly initialized INSTANCE without incurring any additional synchronization overhead
 
 The semantics of Java guarantee that the field will not be initialized until the field is referenced, and that any thread which accesses the field will see all of the writes resulting from initializing that field.
+
+## Singleton property with private constructor
+All calls to `Elvis.getInstance()` below return the same object reference and other `Elvis` instance will be created.
+```java
+public class Elvis {
+    private static final Elvis INSTANCE = new Elvis();
+    private Elvis() {...}
+
+    public static Elvis getInstance() {
+        return INSTANCE;
+    }
+}
+```
+
+## An enum type with one element
+This approach is functionally equivalent to setting a `public static final` field, except that it is more concise, provides the serialization machinery for free, and provides an ironclad guarantee against multiple instantiation, even in the face of sophisticated serialization or reflection attacks.
+```java
+public enum Elvis {
+    INSTANCE;
+
+    public void someMethod() {...}
+}
+```
+As pointed out by *Effective Java*, this is the best way to implement a singleton.
