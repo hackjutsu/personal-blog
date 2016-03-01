@@ -10,7 +10,7 @@ tags:
 ----------
 
 
-I recently came across [metamatt](http://stackoverflow.com/users/275581/metamatt)'s answer about how to inherit from the `EventEmitter` on [StackOverflow](http://stackoverflow.com/a/23918654/3697757).  Matt provides a concise snippet showing good practice for Javascript object inheritance.  I would like to reproduce his answer in my blog.
+This is a repost of an answer on Stackoverflow. Someone asked a [question](http://stackoverflow.com/questions/8898399/node-js-inheriting-from-eventemitter) about how to inherit from `EventEmitter`. Here is an excerpt from [metamatt](http://stackoverflow.com/users/275581/metamatt)'s answer.
 
 <!--more-->
 
