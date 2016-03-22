@@ -26,13 +26,13 @@ Do not ask hypothetical questions about the future, like *"Would you..."* or *"W
 ## What to ask?
 
 ### Customer Interview Script
-1. Tell me a story about the last time `problem context`...
+1. Tell me a story about the last time `<problem context>`...
 2. What was hardest?
 3. Why was that hard?
 4. How do you solve it now?
 5. Why is that not awesome?
 
-The most trickiest part above is how to define the `problem context` for question #1. As an example shown in the author's blog, we don't want the problem to be so specific that everyone could guess what you want to solve (assuming we want to build a vegetarian Yelp), like:
+The most trickiest part above is how to define the `<problem context>` for question #1. Let's talk about an example shown in [Justin Wilcox's blog](http://customerdevlabs.com/). Assuming we want to build a vegetarian Yelp,  we don't want the problem to be so specific that everyone could guess what you want to solve , like:
 > Don't ask: "What's the hardest part about finding a good vegetarian restaurant in a new city?"
 
 And we don't want to be so broad that we are inviting discussion about a range of problems we have no interest to solve:
@@ -59,5 +59,3 @@ Apply the theory of [The 3-Whys](http://www.inc.com/jason-surfrapp/the-theory-of
 ## Resource
 [Customer Dev Labs](http://customerdevlabs.com/)
 [The Lean Startup](http://theleanstartup.com/)
-
-
