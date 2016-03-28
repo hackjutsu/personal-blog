@@ -7,7 +7,7 @@ tags:
 
 ---
 
-<img src="http://i.imgur.com/i5nlFQR.png" style="max-height: 250px;"/>
+<img src="http://i.imgur.com/bD9CTcq.jpg" style="max-height: 380px;"/>
 
 >Too many startups begin with an idea for a product that they think people want. They then spend months, sometimes years, perfecting that product without ever showing the product, even in a very rudimentary form, to the prospective customer. When they fail to reach broad uptake from customers, it is often because they never spoke to prospective customers and determined whether or not the product was interesting. When customers ultimately communicate, through their indifference, that they don't care about the idea, the startup fails. *-- By Eric Ries*
 
