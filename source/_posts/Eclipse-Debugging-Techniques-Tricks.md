@@ -17,7 +17,7 @@ If we put a break point at *Line 8*, then the process will highlight and pause a
 - `Terminate (Command + F2)` will terminate a debugging process.
 
 <!--more-->
-![](./Debug_Perspective.png)
+![](http://i.imgur.com/6Qf3eHH.png)
 
 ----------
 
@@ -38,7 +38,7 @@ int firstPersonAge = DataUtil.getPersonData().get(0).getAge();
 
 For the chained methods above, if we want to debug the `getPersonData()`, we can use the `Step Into` method to get inside. However, if we want to debug the `getAge()`, then `Step Into` won't help. To achieve our goal, select the method `getAge()`, right click and choose `Step Into Selection`. Note that we can also achieve this by putting a break point inside `getAge()`.
 
-![](./Step_Into_Selection.png)
+![](http://i.imgur.com/r3we6ZU.png)
 
 
 ----------
@@ -56,16 +56,13 @@ For the chained methods above, if we want to debug the `getPersonData()`, we can
 ### *Show Logical Structures*
 `Show logcial structures` is a switch on the `Break Points View`. Without this tunred on, the view will show up the internal representations of the collection objects. With it tunred on, the view will show up its children information will be far more useful.
 
-![](./Show_Logical_View.png)
-*Left: before, Right: after*
+![Left: Before   Right: After](http://i.imgur.com/cGPAL43.png)
 
 ----------
 
 ### Changing of Variable's Values during Debugging
-Simply double click the variables on the break point windows and input the new values we want.
-
-![](./Changing_Variable_Values.png)
-
+Simply double click the variables on the break point windows and input the new values we want.  Sometimes, we need to right click the variable and choose `Change Value...`.
+![](http://i.imgur.com/7CV3AuJ.png)
 
 ----------
 
@@ -73,7 +70,7 @@ Simply double click the variables on the break point windows and input the new v
 The `Display View` displays the result of evaluating an expression in the context of the current stack frame. We can evaluate and display a selection either from the editor or directly from the `Display View`.
 > Windows --> Show View --> Display
 
-![](./Display_View.png)
+![](http://i.imgur.com/Xr2TAou.png)
 
 
 ----------
@@ -85,6 +82,6 @@ The debug process pause at a conditional break point *only when it meets the bre
 
 For example, the following codes pause at the break point only when the `Person` instance's country equals to US.
 
-![](./Conditional_Break_Point.png)
+![](http://i.imgur.com/6AH49tz.png)
 
 By checking the `Hit count` box in the `Line Breakpoint` panel above, we can specify the "hit count". For example, if we set it as 6, the process will not pause for the first 5 valid iterations.
