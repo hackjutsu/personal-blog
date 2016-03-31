@@ -30,6 +30,13 @@ If we put a break point at *Line 8*, then the process will highlight and pause a
 
 ---
 
+### Break when Exception thrown
+Go to the breakpoints window, there's a button that looks like `J!`, there we can set breakpoints for Java exceptions, either caught or uncaught. We can reference classes or use pattern matchers for exception names. (thanks to [StackOverflow](http://stackoverflow.com/questions/3066199/break-when-exception-is-thrown))
+
+![](http://i.stack.imgur.com/X84I7.png)
+
+----------
+
 ### *Step into Selection*
 
 ``` java
@@ -56,7 +63,7 @@ For the chained methods above, if we want to debug the `getPersonData()`, we can
 ### *Show Logical Structures*
 `Show logcial structures` is a switch on the `Break Points View`. Without this tunred on, the view will show up the internal representations of the collection objects. With it tunred on, the view will show up its children information will be far more useful.
 
-![Left: Before   Right: After](http://i.imgur.com/cGPAL43.png)
+![Left: before   Right: after](http://i.imgur.com/cGPAL43.png)
 
 ----------
 
