@@ -13,7 +13,7 @@ tags:
 Quick reference for some frequently used Git commands.
 
 <!--more-->
-**Set up a new repository**
+## Set up a new repository
 
 ```bash
 git init
@@ -25,27 +25,69 @@ git commit
 git commit -m "comments"
 git push -u origin master
 ```
+## Working with remote repositories
 
-**Sync with the remote repository**
+### Set up remote repository
 
 ```bash
-# To pull changes to workspace (= fetch + merge)
-git pull origin master
+# set up a new remote repo (origin)
+git remote add origin <new_remote_repo>
 
-# To fetch lastest changes from other developers to local repo
-git fetch <remote_name>
+# change URL for a remote repo (origin)
+git remote set-url origin <new_remote_repo>
 
-# To merge the local repo and the workspace
-git merge origin master
+# list all the remote repositories URLs
+git remote -v
 ```
 
-**Fix the previous commit**
+### Sync with the remote repository
+
+```bash
+# To pull changes to local workspace (= fetch + merge)
+git pull <remote_repo> master
+
+# Download lastest changes(objects and refs) from remote repo
+git fetch <remote_repo>
+
+# To merge the local repo and fetched changes
+git merge FETCH_HEAD
+
+# To merge the origin/feature branch to the current branch
+git merge origin/feature
+```
+
+### More about pull
+>**git pull** ------ Fetch from and integrate with another repository or a local branch
+
+`git pull` incorporates changes from a remote repository into the current branch. In its default mode, `git pull` is shorthand for `git fetch` followed by `git merge FETCH_HEAD`.
+
+More precisely, `git pull` runs `git fetch` with the given parameters and calls git merge to **merge the retrieved branch heads into the current branch**. See the *More about config variables* for more details.
+
+- Update the remote-tracking branches for the repository we cloned from, then merge one of them into our current branch:
+```bash
+git pull, git pull origin
+```
+  Normally the branch merged in is the `HEAD` of the remote repository, but the choice is determined by the `branch.<name>.remote` and `branch.<name>.merge` options.
+
+- To merge a specific remote branch `next` into our current branch, we can run:
+```bash
+git pull origin next
+```
+  This leaves a copy of next temporarily in `FETCH_HEAD`, but does not update any remote-tracking branches. Using remote-tracking branches, the same can be done by invoking fetch and merge:
+```bash
+git fetch origin
+git merge origin/next
+```
+If we tried a pull which resulted in complex conflicts and would want to start over, we can recover with `git reset`.
+
+
+## Fix the previous commit
 
 ```bash
 git commit --amend
 ```
 
-**Undo changes**
+## Undo changes
 
 ```bash
 # unstage changes but keep the local changes in the working space
@@ -60,26 +102,13 @@ git reset --hard B
 git reset --soft B
 ```
 
-**Untrack files**
+## Untrack files
 
 ```bash
 git rm --cached <file_name>
 ```
 
-**Set up remote repository**
-
-```bash
-# set up a new remote repo (origin)
-git remote add origin <new repo url>
-
-# change URL for a remote repo (origin)
-git remote set-url origin <new repo url>
-
-# list all the remote repositories URLs
-git remote -v
-```
-
-**About configs**
+## About configs
 
 ```bash
 # configs for all repositories
@@ -104,8 +133,20 @@ git config --global --unset-all user.name # global
 git config --global --replace-all user.name <New User Name> # global
 ```
 
+### More about config variables
+- **`branch.<name>.remote`**
+  When on `branch <name>`, it tells *git fetch* and *git push* which remote to fetch from/push to.
 
-**About branches**
+- **`branch.<name>.merge`**
+  Defines, together with `branch.<name>.remote`, the upstream branch for the given branch. It tells *git fetch/git pull/git rebase* which branch to merge and can also affect *git push* (see push.default). When in `branch <name>`, it tells *git fetch* the default refspec to be marked for merging in `FETCH_HEAD`.
+
+- **`branch.<name>.pushRemote`**
+  When on `branch <name>`, it overrides `branch.<name>.remote` for pushing. It also overrides `remote.pushDefault` for pushing from `branch <name>`. When we pull from one place (e.g. our upstream) and push to another place (e.g. our own publishing repository), we would want to set `remote.pushDefault` to specify the remote to push to for all branches, and use this option to override it for a specific branch.
+
+- **`remote.pushDefault`**
+  The remote to push to by default. Overrides `branch.<name>.remote` for all branches, and is overridden by `branch.<name>.pushRemote` for specific branches.
+
+## About branches
 
 ```bash
 # fetch remote branches from Github
@@ -139,8 +180,7 @@ git branch -d <branch_name>
 # delete a branch remotely
 git push origin :<branch_name>
 ```
-
-**About diff**
+## About diff
 
 ```bash
 # inspect all the modifications between workspace and stage
@@ -150,13 +190,13 @@ git diff
 git diff --cached
 ```
 
-**About resolving conflicts**
+## About resolving conflicts
 
 ```bash
 git add <resolved file>
 ```
 
-**Advanced topics**
+## Advanced topics
 
 ```bash
 # get the SHA-1 key for a specific contents
