@@ -25,6 +25,8 @@ git commit
 git commit -m "comments"
 git push -u origin master
 ```
+
+----
 ## Working with remote repositories
 
 ### Set up remote repository
@@ -56,6 +58,38 @@ git merge FETCH_HEAD
 git merge origin/feature
 ```
 
+### More about fetch
+>**git fetch** ------ Download objects and refs from another repository
+
+`git fetch` fetches *branches* and/or *tags* (collectively, *refs*) from one or more other repositories, along with the objects necessary to complete their histories. Remote-tracking branches are updated.
+
+When no remote is specified, by default the `origin` remote will be used, unless there’s an upstream branch configured for the current branch.
+
+The names of refs that are fetched, together with the object names they point at, are written to `.git/FETCH_HEAD`.This information may be used by scripts or other git commands, such as `git-pull`.  The `FETCH_HEAD` is just a reference to the tip of the last fetch, whether that fetch was initiated directly using the fetch command or as part of a pull. 
+
+#### `branch.<name>.fetch`
+
+When we have the `branch.<name>.fetch` set as:
+```
+[remote "origin"] fetch = +refs/heads/*:refs/remotes/origin/*
+```
+
+This configuration is used in two ways:
+
+
+##### Without specifying branches
+
+```bash
+git fetch origin
+```
+The above command copies all branches from the remote `refs/heads/` namespace and stores them to the local `refs/remotes/origin/` namespace, unless the `branch.<name>.fetch` option is used to specify a non-default refspec.
+
+##### Specifying branches
+```bash
+git fetch origin master
+```
+This command will fetch only the master branch. The `remote.<repository>.fetch` values determine which remote-tracking branch, if any, is updated. 
+
 ### More about pull
 >**git pull** ------ Fetch from and integrate with another repository or a local branch
 
@@ -81,12 +115,14 @@ git merge origin/next
 If we tried a pull which resulted in complex conflicts and would want to start over, we can recover with `git reset`.
 
 
+----
 ## Fix the previous commit
 
 ```bash
 git commit --amend
 ```
 
+----
 ## Undo changes
 
 ```bash
@@ -102,37 +138,14 @@ git reset --hard B
 git reset --soft B
 ```
 
+----
 ## Untrack files
 
 ```bash
 git rm --cached <file_name>
 ```
 
-## About configs
-
-```bash
-# configs for all repositories
-git config --global user.name # check current global user.name
-git config --global user.name <My username> # set global user.name
-git config --global user.email # check current global user.email
-git config --gloabl user.email=myemail@example.com # set global user.name
-
-# configs for the current local repository
-git config user.name # check current local user.name
-git config user.name <My username> # set local user.name
-git config user.email # check current local user.email
-git config user.email=myemail@example.com # set local user.name
-
-# list all the configs
-git config --list
-
-# Remove the configs
-git config --global --unset-all user.name # global
-
-# Change the configs
-git config --global --replace-all user.name <New User Name> # global
-```
-
+----
 ### More about config variables
 - **`branch.<name>.remote`**
   When on `branch <name>`, it tells *git fetch* and *git push* which remote to fetch from/push to.
@@ -146,6 +159,7 @@ git config --global --replace-all user.name <New User Name> # global
 - **`remote.pushDefault`**
   The remote to push to by default. Overrides `branch.<name>.remote` for all branches, and is overridden by `branch.<name>.pushRemote` for specific branches.
 
+----
 ## About branches
 
 ```bash
@@ -180,6 +194,8 @@ git branch -d <branch_name>
 # delete a branch remotely
 git push origin :<branch_name>
 ```
+
+----
 ## About diff
 
 ```bash
@@ -190,12 +206,40 @@ git diff
 git diff --cached
 ```
 
+----
 ## About resolving conflicts
 
 ```bash
 git add <resolved file>
 ```
 
+----
+## About configs
+
+```bash
+# configs for all repositories
+git config --global user.name # check current global user.name
+git config --global user.name <My username> # set global user.name
+git config --global user.email # check current global user.email
+git config --gloabl user.email=myemail@example.com # set global user.name
+
+# configs for the current local repository
+git config user.name # check current local user.name
+git config user.name <My username> # set local user.name
+git config user.email # check current local user.email
+git config user.email=myemail@example.com # set local user.name
+
+# list all the configs
+git config --list
+
+# Remove the configs
+git config --global --unset-all user.name # global
+
+# Change the configs
+git config --global --replace-all user.name <New User Name> # global
+```
+
+----
 ## Advanced topics
 
 ```bash
