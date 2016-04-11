@@ -67,3 +67,21 @@ Let's combine the redirection with piping.
 ``` bash
 ls | head -3 | tail -1 > myoutput.txt
 ```
+
+### Keep the exit status while piping
+Usually piping will lose the exit status of the commands before `|` operator. To preserve the previous exit status, we need to turn on the `pipefail` option.
+
+From the [Bash Reference Manual](http://www.gnu.org/software/bash/manual/bashref.html):
+> The exit status of a pipeline is the exit status of the last command in the pipeline, unless the `pipefail` option is enabled (see The [Set Builtin](http://www.gnu.org/software/bash/manual/bashref.html#The-Set-Builtin)). If `pipefail` is enabled, the pipeline's return status is the value of the last (rightmost) command to exit with a non-zero status, or zero if all commands exit successfully.
+
+**Example:**
+
+```bash
+$ false | tee /dev/null ; echo $?
+0
+$ set -o pipefail
+$ false | tee /dev/null ; echo $?
+1
+```
+
+*Original link: [StackOverflow](http://stackoverflow.com/a/6872163/3697757)*

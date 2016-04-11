@@ -66,7 +66,7 @@ git reset --soft B
 git rm --cached <file_name>
 ```
 
-**Set up remote repositories**
+**Set up remote repository**
 
 ```bash
 # set up a new remote repo (origin)
@@ -79,18 +79,20 @@ git remote set-url origin <new repo url>
 git remote -v
 ```
 
-**About Configs**
+**About configs**
 
 ```bash
-# configurations for all repositories
+# configs for all repositories
 git config --global user.name # check current global user.name
-git config --global user.name <My username>
-git config --gloabl user.email=myemail@example.com
+git config --global user.name <My username> # set global user.name
+git config --global user.email # check current global user.email
+git config --gloabl user.email=myemail@example.com # set global user.name
 
-# configurations for local repository
+# configs for the current local repository
 git config user.name # check current local user.name
-git config user.name <My username>
-git config -user.email=myemail@example.com
+git config user.name <My username> # set local user.name
+git config user.email # check current local user.email
+git config user.email=myemail@example.com # set local user.name
 
 # list all the configs
 git config --list
@@ -103,7 +105,7 @@ git config --global --replace-all user.name <New User Name> # global
 ```
 
 
-**About Branches**
+**About branches**
 
 ```bash
 # fetch remote branches from Github
@@ -154,7 +156,7 @@ git diff --cached
 git add <resolved file>
 ```
 
-**Advanced Topics**
+**Advanced topics**
 
 ```bash
 # get the SHA-1 key for a specific contents
