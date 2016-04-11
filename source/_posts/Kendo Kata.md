@@ -8,7 +8,7 @@ tags:
 ---
 <figure>
     <img src="http://i.imgur.com/YQfui8Q.jpg" style="max-height: 400px;"/>
-    <figurecaption><i>Photo courtesy of <a href="kendomonochrome.com">Kendo Monochrome</a></i></figurecaption>
+    <figurecaption><i>Photo courtesy of <a href="http://kendomonochrome.com">Kendo Monochrome</a></i></figurecaption>
 </figure>
 
 **Kendo Kata** are fixed patterns that teach kendoka (kendo practitioners) the basic elements of swordsmanship. There are two roles, uchidachi (打太刀), the teacher, and shidachi (仕太刀), the student. Kata were originally used to preserve the techniques and history of kenjutsu for future generations. Modern usage of kata is as a teaching tool to learn strike techniques, attack intervals, body movement, sincerity and kigurai (pride).
