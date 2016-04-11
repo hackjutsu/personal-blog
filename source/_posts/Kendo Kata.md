@@ -7,7 +7,7 @@ tags:
 - Kendo
 ---
 <figure>
-    <img src="http://i.imgur.com/YQfui8Q.jpg" style="max-height: 400px;"/>
+    <img src="http://i.imgur.com/TV7MAIx.png" style="max-height: 400px;"/>
     <figurecaption><i>Photo courtesy of <a href="http://kendomonochrome.com">Kendo Monochrome</a></i></figurecaption>
 </figure>
 
