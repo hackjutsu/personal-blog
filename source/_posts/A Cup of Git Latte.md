@@ -146,20 +146,6 @@ git rm --cached <file_name>
 ```
 
 ----
-### More about config variables
-- **`branch.<name>.remote`**
-  When on `branch <name>`, it tells *git fetch* and *git push* which remote to fetch from/push to.
-
-- **`branch.<name>.merge`**
-  Defines, together with `branch.<name>.remote`, the upstream branch for the given branch. It tells *git fetch/git pull/git rebase* which branch to merge and can also affect *git push* (see push.default). When in `branch <name>`, it tells *git fetch* the default refspec to be marked for merging in `FETCH_HEAD`.
-
-- **`branch.<name>.pushRemote`**
-  When on `branch <name>`, it overrides `branch.<name>.remote` for pushing. It also overrides `remote.pushDefault` for pushing from `branch <name>`. When we pull from one place (e.g. our upstream) and push to another place (e.g. our own publishing repository), we would want to set `remote.pushDefault` to specify the remote to push to for all branches, and use this option to override it for a specific branch.
-
-- **`remote.pushDefault`**
-  The remote to push to by default. Overrides `branch.<name>.remote` for all branches, and is overridden by `branch.<name>.pushRemote` for specific branches.
-
-----
 ## About branches
 
 ```bash
@@ -238,6 +224,20 @@ git config --global --unset-all user.name # global
 # Change the configs
 git config --global --replace-all user.name <New User Name> # global
 ```
+
+### More about config variables
+- **`branch.<name>.remote`**
+  When on `branch <name>`, it tells *git fetch* and *git push* which remote to fetch from/push to.
+
+- **`branch.<name>.merge`**
+  Defines, together with `branch.<name>.remote`, the upstream branch for the given branch. It tells *git fetch/git pull/git rebase* which branch to merge and can also affect *git push* (see push.default). When in `branch <name>`, it tells *git fetch* the default refspec to be marked for merging in `FETCH_HEAD`.
+
+- **`branch.<name>.pushRemote`**
+  When on `branch <name>`, it overrides `branch.<name>.remote` for pushing. It also overrides `remote.pushDefault` for pushing from `branch <name>`. When we pull from one place (e.g. our upstream) and push to another place (e.g. our own publishing repository), we would want to set `remote.pushDefault` to specify the remote to push to for all branches, and use this option to override it for a specific branch.
+
+- **`remote.pushDefault`**
+  The remote to push to by default. Overrides `branch.<name>.remote` for all branches, and is overridden by `branch.<name>.pushRemote` for specific branches.
+
 
 ----
 ## Advanced topics
