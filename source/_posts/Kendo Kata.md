@@ -35,74 +35,47 @@ There are two types of Kendo kata. *Nihon Kendo Kata* was first finalized in 191
 ## Ippon-uchi no waza
 **Action:**
 Single cuts: Men, Kote, Dō, Tsuki
-<div class="videoWrapper">
-    <!-- Copy & Pasted from YouTube -->
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/UfL4aXfH1kQ?list=PLDA2EDBF2DD6A1EC8" frameborder="0" allowfullscreen></iframe>
-</div>
+{% youtube UfL4aXfH1kQ %}
 
 ## Ni/Sandan no waza
 **Action:**
 Two continuous cuts: Kote and Men
-<div class="videoWrapper">
-    <!-- Copy & Pasted from YouTube -->
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/doKyCga6h5I?list=PLDA2EDBF2DD6A1EC8" frameborder="0" allowfullscreen></iframe>
-</div>
+{% youtube doKyCga6h5I %}
 
 ## Harai waza
 **Actions:**
 Harai waza: Harai Men (using omote the left side of your sword)
-<div class="videoWrapper">
-    <!-- Copy & Pasted from YouTube -->
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/UcxGPgWn2E8?list=PLDA2EDBF2DD6A1EC8" frameborder="0" allowfullscreen></iframe>
-</div>
+{% youtube UcxGPgWn2E8 %}
 
 ## Hiki waza
 **Action:**
 Hiki waza: Hiki Dō (the right dō)
-<div class="videoWrapper">
-    <!-- Copy & Pasted from YouTube -->
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/zkTXrT85ziw?list=PLDA2EDBF2DD6A1EC8" frameborder="0" allowfullscreen></iframe>
-</div>
+{% youtube zkTXrT85ziw %}
 
 ## Nuki waza
 **Action:**
 Nuki waza: Men Nuki Dō (the right dō)
-<div class="videoWrapper">
-    <!-- Copy & Pasted from YouTube -->
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/WgNQR2ZqEng?list=PLDA2EDBF2DD6A1EC8" frameborder="0" allowfullscreen></iframe>
-</div>
+{% youtube WgNQR2ZqEng %}
 
 ## Suriage waza
 **Action:**
 Suriage waza: Kote Suriage Men(using ura the right side of your sword)
-<div class="videoWrapper">
-    <!-- Copy & Pasted from YouTube -->
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/ja48MMyAW1U?list=PLDA2EDBF2DD6A1EC8" frameborder="0" allowfullscreen></iframe>
-</div>
+{% youtube ja48MMyAW1U %}
 
 ## Debana waza
 **Action:**
 Debana waza: Debana Kote
-<div class="videoWrapper">
-    <!-- Copy & Pasted from YouTube -->
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/iO6pyK_ZwX0?list=PLDA2EDBF2DD6A1EC8" frameborder="0" allowfullscreen></iframe>
-</div>
+{% youtube iO6pyK_ZwX0 %}
 
 ## Kaeshi waza
 **Action:**
 Kaeshi waza: Men Kaeshi Dō (the right dō)
-<div class="videoWrapper">
-    <!-- Copy & Pasted from YouTube -->
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/gqLryNlZsEo?list=PLDA2EDBF2DD6A1EC8" frameborder="0" allowfullscreen></iframe>
-</div>
+{% youtube gqLryNlZsEo %}
 
 ## Uchiotoshi waza
 **Action:**
 Uchiotoshi waza: Dō Uchiotoshi Men (the right dō)
-<div class="videoWrapper">
-    <!-- Copy & Pasted from YouTube -->
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/7MibQ47wGfY?list=PLDA2EDBF2DD6A1EC8" frameborder="0" allowfullscreen></iframe>
-</div>
+{% youtube 7MibQ47wGfY %}
 
 ## Resource
 [Wikipedia: Kendo Kata](https://en.wikipedia.org/wiki/Kendo_Kata)
