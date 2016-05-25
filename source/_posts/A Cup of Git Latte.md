@@ -293,6 +293,19 @@ git config --global --replace-all user.name <New User Name> # global
   The remote to push to by default. Overrides `branch.<name>.remote` for all branches, and is overridden by `branch.<name>.pushRemote` for specific branches.
 
 ----
+## View history for a file
+```bash
+# Show commit history of a specific file
+git log --follow -p <file>
+
+# Show details of a specific commit
+git show <commit id>
+
+# Show what revision and author last modified each line of a file
+git blame <file>
+```
+
+----
 ## Files info about index/working tree
 ```bash
 git ls-files
@@ -312,6 +325,10 @@ git cat-file -p <key>
 
 # get a object type for a SHA-1 key
 git cat-file -t <key>
+
+# list the contents of a tree object
+git ls-tree <tree_key>
+
 ```
 
 ----

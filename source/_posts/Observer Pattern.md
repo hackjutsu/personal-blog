@@ -11,7 +11,7 @@ categories:
 ---
 
 
-In some cases, we need an one-to-many relationship between objects. If one object is modified, its depenedent objects are to be notified automatically.
+In some cases, we need an one-to-many relationship between objects. If one object is modified, its dependent objects are to be notified automatically.
 
 <!--more-->
 
