@@ -7,6 +7,9 @@ tags:
 - CommandLine
 - bash
 
+categories:
+- Command Lines
+
 ---
 
 Sourcing a file in Unix/Linux evaluates the file as a list of commands and executes them in the current context. Most people might have used this technique when updating the configurations for their terminals.

@@ -12,7 +12,7 @@ categories:
 
 <img src="http://i.imgur.com/uU3V2MT.png" style="max-height: 350px;"/>
 
-**BitTiger Geeks Ranking** (太阁极客榜) is a real-time ranking board for BitTiger's Github members. Its results are based on members' Github activities in the past seven days with daily updates at **06:30 PDT**. 
+**BitTiger Geeks Ranking** (太阁极客榜) is a real-time ranking board for BitTiger's Github members. Its results are based on members' Github activities in the past seven days with daily updates at **06:30 PDT**.
 
 > **Note:** This post is my summary for those front end knowledge applied in this project.
 
@@ -32,7 +32,7 @@ HTML Forms are used to collect user inputs.
 ```
 The `<input>` element is the most important form element. Form elements are different types of input elements, checkboxes, radio buttons, submit buttons, and more.
 
-> Checkout this link for more information about [HTML Forms](http://www.w3schools.com/html/html_forms.asp).
+> Check out this link for more information about [HTML Forms](http://www.w3schools.com/html/html_forms.asp).
 
 ## CSS
 CSS (Cascading Style Sheets) is a stylesheet language that describes the presentation of an HTML document.
@@ -49,7 +49,7 @@ The CSS `padding` properties are used to generate space around content. The padd
 ### Height/Width
 The `height` and `width` properties do **NOT** include padding, borders, or margins; they set the height/width of the area inside the padding, border, and margin of the element!
 
-Besides height/width, there are also max-height/min-height/max-width/min-width. 
+Besides height/width, there are also max-height/min-height/max-width/min-width.
 
 >Check out this [link](http://www.w3schools.com/css/css_dimension.asp) for mare information.
 
@@ -64,7 +64,7 @@ An `inline` element does not start on a new line and only takes up as much width
 
 An `inline-block` element is a combination between `block` and `inline`.
 
-> Checkout this [StackOverflow post](http://stackoverflow.com/questions/8969381/what-is-the-difference-between-display-inline-and-display-inline-block) for more about their difference.
+> Check out this [StackOverflow post](http://stackoverflow.com/questions/8969381/what-is-the-difference-between-display-inline-and-display-inline-block) for more about their difference.
 
 ### Position
 The position property specifies the type of positioning method used for an element.
@@ -75,13 +75,62 @@ There are four different position values:
 - fixed
 - absolute
 
-> Checkout this [post](http://www.w3schools.com/css/css_positioning.asp) to see their difference.
+> Check out this [post](http://www.w3schools.com/css/css_positioning.asp) to see their difference.
 
 ### Float
 The `float` property specifies whether or not an element should float.
 The `clear` property is used to control the behavior of floating elements.
 
-> Checkout this [post](http://www.w3schools.com/css/css_float.asp) to see their difference.
+> Check out this [post](http://www.w3schools.com/css/css_float.asp) to see their difference.
+
+### Text
+####  Text Color
+The `color` property is used to set the color of the text.
+```
+#p1 {color: #ff0000;}   /* red */
+#p2 {color: rgb(0, 255, 0);}   /* green */
+#p3 {color: rgba(0, 0, 255, 0.3);}   /* blue with opacity */
+```
+> Check out this [post](http://www.w3schools.com/cssref/css_colors_legal.asp) for more about the CSS color options.
+
+#### Text Alignment
+The `text-align` property is used to set the horizontal alignment of a text.
+- left
+- right
+- center
+- justify
+
+#### Text Decoration
+The `text-decoration` property is used to set or remove decorations from text. The value `text-decoration: none;` is often used to remove underlines from links.
+- none
+- overline
+- line-through
+- underline
+
+####  Text Transformation
+The `text-transform` property is used to specify uppercase and lowercase letters in a text.
+```
+p.uppercase {
+    text-transform: uppercase;
+}
+
+p.lowercase {
+    text-transform: lowercase;
+}
+
+p.capitalize {
+    text-transform: capitalize;
+}
+```
+
+#### More
+`text-indent`
+`letter-spacing`
+`line-height`
+`direction`
+`word-spacing`
+
+> Check out this [post](http://www.w3schools.com/css/css_text.asp) for more details.
 
 ### Combinators
 There are four different combinators in CSS3:
@@ -91,7 +140,7 @@ There are four different combinators in CSS3:
 - adjacent sibling selector (+)
 - general sibling selector (~)
 
-> Checkout this [post](http://www.w3schools.com/css/css_combinators.asp) to see their difference.
+> Check out this [post](http://www.w3schools.com/css/css_combinators.asp) to see their difference.
 
 ### Pseudo-class
 A pseudo-class is used to define a special state of an element. For example, it can be used to:
@@ -100,7 +149,7 @@ A pseudo-class is used to define a special state of an element. For example, it 
 - Style visited and unvisited links differently
 - Style an element when it gets focus
 
-> Checkout this [post](http://www.w3schools.com/css/css_pseudo_classes.asp) to see their difference.
+> Check out this [post](http://www.w3schools.com/css/css_pseudo_classes.asp) to see their difference.
 
 ### Pseudo-element
 
@@ -109,7 +158,39 @@ A CSS pseudo-element is used to style specified parts of an element. For example
 - Style the first letter, or line, of an element
 - Insert content before, or after, the content of an element
 
-> Checkout this [post](http://www.w3schools.com/css/css_pseudo_elements.asp) to see their difference.
+> Check out this [post](http://www.w3schools.com/css/css_pseudo_elements.asp) to see their difference.
+
+## CSS3
+CSS3 is the latest standard for CSS. It is completely backwards-compatible with earlier versions of CSS.
+> Check out this [post](http://code.tutsplus.com/tutorials/10-css3-properties-you-need-to-be-familiar-with--net-16417) for the some popular CSS3 properties.
+
+### Rounded Corners
+With the CSS3 `border-radius` property, we can give any element "rounded corners".
+```
+border-radius: 25px;
+border-radius: 50%;
+```
+
+### Box Sizing
+The CSS3 `box-sizing` property allows us to include the padding and border in an element's total width and height.
+
+**Without the CSS3 box-sizing Property**
+width + padding + border = actual width of an element
+height + padding + border = actual height of an element
+
+**With the CSS3 box-sizing Property**
+Padding and border are included in an element's total width and height.
+
+```
+.div1 {
+    width: 300px;
+    height: 100px;
+    border: 1px solid blue;
+    box-sizing: border-box;
+}
+```
+Since the result of using the `box-sizing: border-box;` is so much better, many developers want all elements on their pages to work this way.
+
 
 ## Bootstrap
 ### Grid Basics
@@ -137,7 +218,7 @@ The following is a basic structure of a Bootstrap grid;
 </div>
 ```
 
-> Checkout this [post](http://www.w3schools.com/bootstrap/bootstrap_grid_basic.asp) for more information about Bootstrap grid system.
+> Check out this [post](http://www.w3schools.com/bootstrap/bootstrap_grid_basic.asp) for more information about Bootstrap grid system.
 
 ## AngularJS
 > Check out these two Udemy courses to go over AnguarJS.
@@ -207,7 +288,7 @@ Here is a list of Grunt tasks used in our project.
 
 - 第一阶段：库/框架选型
 	- AngularJS、React、Bootstrap...
-- 第二阶段：简单构建优化 
+- 第二阶段：简单构建优化
 	- Grunt or Gulp
 - 第三阶段：JS/CSS模块化开发
 	- 分而治之
@@ -219,7 +300,7 @@ Here is a list of Grunt tasks used in our project.
 ## Resource
 - [w3schools](http://www.w3schools.com/)
 - [Udemy](https://www.udemy.com/courses/)
-- [AngularJS](https://angularjs.org/) 
+- [AngularJS](https://angularjs.org/)
 - [Grunt](http://gruntjs.com/)
 - [fouber's GitHub blog](https://github.com/fouber/blog)
 
