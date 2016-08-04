@@ -81,4 +81,4 @@ Uchiotoshi waza: Dō Uchiotoshi Men (the right dō)
 [Wikipedia: Kendo Kata](https://en.wikipedia.org/wiki/Kendo_Kata)
 [Bokuto Ni Yoru Kendo Kihon Waza Keiko Ho](http://www.kendo-guide.com/bokuto-ni-yoru-kendo-kihon-waza-keiko-ho.html)
 
-> **Disclaimer:** All content provided on this *[Hackjustu Dojo](hackjustu.ninja)* blog is for informational purposes only. The owner of this blog makes no representations as to the accuracy or completeness of any information on this site or found by following any link on this site.
+> **Disclaimer:** All content provided on this *[Hackjutsu Dojo](hackjutsu.com)* blog is for informational purposes only. The owner of this blog makes no representations as to the accuracy or completeness of any information on this site or found by following any link on this site.

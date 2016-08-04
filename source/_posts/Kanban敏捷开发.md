@@ -100,7 +100,7 @@ tags:
 有的团队把`Kanban`和`Scrum`两种方法糅合成一种叫做`Scrumban`的方法。这个方法吸取了`Scrum`中固定长度的*Sprint*和各种角色（*Product Owner*、*Sprint Master*等等）概念，同时也吸收了`Kanban`中“Focus on Flow” 和 “Limit Work In Progress”等原则。但是，刚开始采用Agile的团队建议只采取`Scrum`和`Kanban`中的一种，在熟练掌握所选方法后才根据团队特点进行相应的糅合或创新。
 
 ## 参考资料
-[Kanban敏捷开发](http://hackjustu.ninja/2016/02/12/Kanban%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/#.VsDuYeaSMoI.google_plusone_share)
+[Kanban敏捷开发](http://hackjutsu.com/2016/02/12/Kanban%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/#.VsDuYeaSMoI.google_plusone_share)
  [Atlassian: A brief introduction to kanban](https://www.atlassian.com/agile/kanban/)
  [LeanKit：What is Kanban？](http://leankit.com/learn/kanban/what-is-kanban/)
  [Kanban Blog：What is Kanban?](http://kanbanblog.com/explained/)

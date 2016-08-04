@@ -22,4 +22,4 @@ $ false && echo "Oops"  #Nothing
 $ true  && echo "Oops"  #Print "Oops"
 ```
 
->**Note:** Don't confuse the logical operator `||` with the pipe operator `|`. Check out [this post](http://hackjustu.ninja/2015/11/16/Bash-Redirection/) for bash piping.
+>**Note:** Don't confuse the logical operator `||` with the pipe operator `|`. Check out [this post](http://hackjutsu.com/2015/11/16/Bash-Redirection/) for bash piping.

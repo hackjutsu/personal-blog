@@ -40,28 +40,28 @@ As stated in the [Maven Tutorial by Jakob Jenkov](http://tutorials.jenkov.com/ma
 ### Create a Project from Maven Template
 In a terminal, navigate to the folder you want to create the Java project.
 ``` bash
-mvn archetype:generate -DgroupId=ninja.hackjustu
-   -DartifactId=hackjustuDemo
+mvn archetype:generate -DgroupId=ninja.hackjutsu
+   -DartifactId=hackjutsuDemo
    -DarchetypeArtifactId=maven-archetype-quickstart
    -DinteractiveMode=false
 ```
-Maven will create a Java project from the Maven `maven-archetype-quickstart template`. In above case, a new Java project `hackjustuDemo` and the entire project directory structure are created automatically.
+Maven will create a Java project from the Maven `maven-archetype-quickstart template`. In above case, a new Java project `hackjutsuDemo` and the entire project directory structure are created automatically.
 
 ### Maven Directory Layout
 With mvn `archetype:generate` + `maven-archetype-quickstart` template, the following project directory structure is created.
 ``` bash
-hackjustuDemo
+hackjutsuDemo
 ├── pom.xml
 └── src
     ├── main
     │   └── java
     │       └── ninja
-    │           └── hackjustu
+    │           └── hackjutsu
     │               └── App.java
     └── test
         └── java
             └── ninja
-                └── hackjustu
+                └── hackjutsu
                     └── AppTest.java
 ```
 In simple, all source code puts in folder `/src/main/java/`, all unit test code puts in `/src/test/java/`. Check out this [post](http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html) for more details.
@@ -73,11 +73,11 @@ Here is the content of the generated `pom.xml`.
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>ninja.hackjustu</groupId>
-  <artifactId>hackjustuDemo</artifactId>
+  <groupId>ninja.hackjutsu</groupId>
+  <artifactId>hackjutsuDemo</artifactId>
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>hackjustuDemo</name>
+  <name>hackjutsuDemo</name>
   <url>http://maven.apache.org</url>
   <dependencies>
     <dependency>
@@ -91,7 +91,7 @@ Here is the content of the generated `pom.xml`.
 ```
 
 ### Eclipse Project
-To make this as an Eclipse project, in terminal, navigate to `hackjustuDemo` project, type in the following commands:
+To make this as an Eclipse project, in terminal, navigate to `hackjutsuDemo` project, type in the following commands:
 ``` bash
 mvn eclipse:eclipse
 ```
@@ -109,25 +109,25 @@ This command compiles, run unit test and package the project into a `jar` file a
 
 Here is the directory structure after the `mvn package` command:
 ``` bash
-hackjustuDemo
+hackjutsuDemo
 ├── pom.xml
 ├── src
 │   ├── main
 │   │   └── java
 │   │       └── ninja
-│   │           └── hackjustu
+│   │           └── hackjutsu
 │   │               └── App.java
 │   └── test
 │       └── java
 │           └── ninja
-│               └── hackjustu
+│               └── hackjutsu
 │                   └── AppTest.java
 └── target
     ├── classes
     │   └── ninja
-    │       └── hackjustu
+    │       └── hackjutsu
     │           └── App.class
-    ├── hackjustuDemo-1.0-SNAPSHOT.jar
+    ├── hackjutsuDemo-1.0-SNAPSHOT.jar
     ├── maven-archiver
     │   └── pom.properties
     ├── maven-status
@@ -141,17 +141,17 @@ hackjustuDemo
     │               ├── createdFiles.lst
     │               └── inputFiles.lst
     ├── surefire-reports
-    │   ├── TEST-ninja.hackjustu.AppTest.xml
-    │   └── ninja.hackjustu.AppTest.txt
+    │   ├── TEST-ninja.hackjutsu.AppTest.xml
+    │   └── ninja.hackjutsu.AppTest.txt
     └── test-classes
         └── ninja
-            └── hackjustu
+            └── hackjutsu
                 └── AppTest.class
 ```
 
 ### Run the Application
 ``` bash
-java -cp target/hackjustuDemo-1.0-SNAPSHOT.jar ninja.hackjustu.App
+java -cp target/hackjutsuDemo-1.0-SNAPSHOT.jar ninja.hackjutsu.App
 ```
 
 

@@ -273,8 +273,8 @@ A project should list only licenses that may apply directly to this project, and
 Here is the most basic information about an organization.
 ``` xml
 <organization>
-  <name>Hackjustu</name>
-  <url>http://hackjustu.ninja</url>
+  <name>Hackjutsu</name>
+  <url>http://hackjutsu.ninja</url>
 </organization>
 ```
 
@@ -284,9 +284,9 @@ This section is self-explained.
 <developers>
     <developer>
       <id>hackjustn</id>
-      <name>Hackjustu Ninja</name>
+      <name>Hackjutsu Ninja</name>
       <email>hackjustn@example.com<email>
-      <url>http://hackjustu.ninja/someone</url>
+      <url>http://hackjutsu.ninja/someone</url>
       <organization>SomeOrganization</organization>
       <organizationUrl>http://www.example.com</organizationUrl>
       <roles>
@@ -295,7 +295,7 @@ This section is self-explained.
       </roles>
       <timezone>America/New_York</timezone>
       <properties>
-        <picUrl>http://www.example.com/hackjustu/pic</picUrl>
+        <picUrl>http://www.example.com/hackjutsu/pic</picUrl>
       </properties>
     </developer>
   </developers>
