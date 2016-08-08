@@ -3,7 +3,7 @@ title: Command Lines Miscellaneous
 date: 2015-10-13 18:00:00
 categories:
 - Command Lines
-tags: 
+tags:
 - CommandLine
 - OSX
 
@@ -37,7 +37,7 @@ kill -KILL 1710
 `killall [-SIGNAL] [process name]` - The killall command kills all process with a particular name.  Its default signal is `TERM`.
 
 ``` bash
-killall firefox 
+killall firefox
 ```
 We can specify other specific signal such as KILL(9)
 ```bash
@@ -49,9 +49,8 @@ To check the available signals
 killall -l lists signals
 ```
 Here is a list of available signals for reference:
-`HUP` `INT` `QUIT` `ILL` `TRAP` `ABRT` `EMT` `FPE` `KILL` `BUS` `SEGV` `SYS` `PIPE` `ALRM` `TERM` `URG` `STOP` `TSTP` `CONT` `CHLD` `TTIN` `TTOU` `IO` `XCPU` `XFSZ` `VTALRM` `PROF` `WINCH` `INFO` `USR1` `USR2` 
+`HUP` `INT` `QUIT` `ILL` `TRAP` `ABRT` `EMT` `FPE` `KILL` `BUS` `SEGV` `SYS` `PIPE` `ALRM` `TERM` `URG` `STOP` `TSTP` `CONT` `CHLD` `TTIN` `TTOU` `IO` `XCPU` `XFSZ` `VTALRM` `PROF` `WINCH` `INFO` `USR1` `USR2`
 #### pkill
 This command is a lot like killall except it allows partial names. So, `pkill -9 unity` will kill any process whose name begins with "unity". `pkill` can also kill all processes owned by a particular user - `pkill -9 -u USERNAME`.
 #### More...
 http://www.linux.org/threads/kill-signals-and-commands-revised.8096/
-
