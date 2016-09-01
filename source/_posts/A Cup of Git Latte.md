@@ -98,20 +98,20 @@ This command will fetch only the master branch. The `remote.<repository>.fetch` 
 ### More about merge
 >**git merge** ------ Join two or more development histories together
 
-`git merge` incorporates changes from the named commits (since the time their histories diverged from the current branch) into the current branch. 
+`git merge` incorporates changes from the named commits (since the time their histories diverged from the current branch) into the current branch.
 
 Assume the following history exists and *the current branch is "master"*:
 
       A---B---C topic
      /
     D---E---F---G master
-    
+
 Then `git merge topic` will replay the changes made on the topic branch since it diverged from master (E) until its current commit (C) on top of master, and record the result in a new commit (H) along with the names of the two parent commits and a log message from the user describing the changes.
-    
+
       A---B---C topic
 	 /         \
     D---E---F---G---H master
-    
+
 #### Pre-merge checks
 Before performing any merge, we should make sure our codes are in good shape and commit all local changes. `git pull` and `git merge` will stop without doing anything when local uncommitted changes overlap with files that `git pull`/`git merge` may need to update.
 
@@ -239,6 +239,9 @@ git branch -d <branch_name>
 
 # delete a branch remotely
 git push origin :<branch_name>
+
+# push local branch A to remote branch B
+git push origin <local branch>:<remote branch>
 ```
 
 ----

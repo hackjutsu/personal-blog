@@ -4,8 +4,8 @@
 
 # Site
 title: Hackjutsu Dojo
-subtitle: The road to a Hacker.
-description: 事未成時，小心翼翼。事將成時，大膽無懼。事已成時，大意大敵。
+subtitle: I code therefore I am.
+description: I code therefore I am.
 author: Cosmo
 language: en
 timezone:
@@ -17,7 +17,7 @@ favicon: /favicon.ico
 google_analytics: UA-72207664-1
 
 # Disqus
-disqus_shortname: hackjutsu
+disqus_shortname: hackjustu
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
