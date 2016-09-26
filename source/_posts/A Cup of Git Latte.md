@@ -264,7 +264,7 @@ git diff --cached
 git config --global user.name # check current global user.name
 git config --global user.name <My username> # set global user.name
 git config --global user.email # check current global user.email
-git config --gloabl user.email=myemail@example.com # set global user.name
+git config --gloabl user.email myemail@example.com # set global user.name
 
 # configs for the current local repository
 git config user.name # check current local user.name
